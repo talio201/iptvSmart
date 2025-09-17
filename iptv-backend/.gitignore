@@ -1,0 +1,13 @@
+
+# Environments
+.env
+
+# Virtualenv
+venv/
+
+# Temporary files
+hls_temp/
+
+# Python cache
+__pycache__/
+*.pyc
