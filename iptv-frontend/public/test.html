@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <title>HLS.js Test Player</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  </head>
+  <body>
+    <h1>HLS.js Test Player</h1>
+    <p>Este é um teste mínimo para verificar a compatibilidade do stream.</p>
+    <video id="video" controls width="800"></video>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const video = document.getElementById('video');
+        // IMPORTANTE: Cole a URL direta do stream aqui
+        const streamUrl = 'YOUR_STREAM_URL_HERE';
+
+        if (Hls.isSupported()) {
+          const hls = new Hls({
+            debug: true, // Ativa logs detalhados no console
+          });
+          hls.loadSource(streamUrl);
+          hls.attachMedia(video);
+          hls.on(Hls.Events.MANIFEST_PARSED, () => {
+            console.log('Manifest parsed, attempting to play...');
+            video.play();
+          });
+          hls.on(Hls.Events.ERROR, (event, data) => {
+            console.error('HLS.js Error:', data);
+          });
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+          video.src = streamUrl;
+          video.addEventListener('loadedmetadata', () => {
+            video.play();
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

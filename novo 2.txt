@@ -1,0 +1,188 @@
+-- WARNING: This schema is for context only and is not meant to be run.
+-- Table order and constraints may not be valid for execution.
+
+CREATE TABLE public.categories (
+  id integer NOT NULL DEFAULT nextval('categories_id_seq'::regclass),
+  category_id character varying NOT NULL,
+  category_name character varying NOT NULL,
+  parent_id integer,
+  stream_type character varying NOT NULL,
+  connection_id integer NOT NULL,
+  created_at timestamp without time zone,
+  updated_at timestamp without time zone,
+  CONSTRAINT categories_pkey PRIMARY KEY (id),
+  CONSTRAINT categories_connection_id_fkey FOREIGN KEY (connection_id) REFERENCES public.xtream_connections(id)
+);
+CREATE TABLE public.channels (
+  id integer NOT NULL DEFAULT nextval('channels_id_seq'::regclass),
+  stream_id integer NOT NULL UNIQUE,
+  num integer,
+  name text,
+  stream_type character varying,
+  stream_icon text,
+  category_id character varying,
+  container_extension character varying,
+  connection_id integer NOT NULL,
+  created_at timestamp with time zone DEFAULT now(),
+  updated_at timestamp with time zone DEFAULT now(),
+  thumbnail text,
+  rating text,
+  rating_5based numeric,
+  added text,
+  custom_sid text,
+  epg_channel_id text,
+  tv_archive integer,
+  tv_archive_duration integer,
+  direct_source text,
+  CONSTRAINT channels_pkey PRIMARY KEY (id)
+);
+CREATE TABLE public.epg_programs (
+  id integer NOT NULL DEFAULT nextval('epg_programs_id_seq'::regclass),
+  epg_id character varying NOT NULL,
+  channel_id character varying NOT NULL,
+  title character varying NOT NULL,
+  description text,
+  start_time timestamp without time zone NOT NULL,
+  end_time timestamp without time zone NOT NULL,
+  lang character varying,
+  connection_id integer NOT NULL,
+  created_at timestamp without time zone,
+  CONSTRAINT epg_programs_pkey PRIMARY KEY (id),
+  CONSTRAINT epg_programs_connection_id_fkey FOREIGN KEY (connection_id) REFERENCES public.xtream_connections(id)
+);
+CREATE TABLE public.movies (
+  id integer NOT NULL DEFAULT nextval('movies_id_seq'::regclass),
+  stream_id integer NOT NULL UNIQUE,
+  num integer,
+  name text,
+  title text,
+  year character varying,
+  stream_type character varying,
+  stream_icon text,
+  rating text,
+  rating_5based numeric,
+  container_extension character varying,
+  category_id character varying,
+  connection_id integer NOT NULL,
+  created_at timestamp with time zone DEFAULT now(),
+  updated_at timestamp with time zone DEFAULT now(),
+  added text,
+  custom_sid text,
+  direct_source text,
+  CONSTRAINT movies_pkey PRIMARY KEY (id)
+);
+CREATE TABLE public.series_list (
+  id integer NOT NULL DEFAULT nextval('series_list_id_seq'::regclass),
+  series_id character varying NOT NULL UNIQUE,
+  num integer,
+  name character varying NOT NULL,
+  title text,
+  year character varying,
+  cover text,
+  plot text,
+  cast text,
+  director text,
+  genre text,
+  release_date character varying,
+  releaseDate character varying,
+  last_modified character varying,
+  rating text,
+  rating_5based numeric,
+  stream_type character varying NOT NULL DEFAULT 'series'::character varying,
+  category_id character varying,
+  category_ids text,
+  backdrop_path text,
+  youtube_trailer text,
+  episode_run_time text,
+  connection_id integer NOT NULL,
+  created_at timestamp with time zone DEFAULT now(),
+  updated_at timestamp with time zone DEFAULT now(),
+  CONSTRAINT series_list_pkey PRIMARY KEY (id)
+);
+CREATE TABLE public.user (
+  id integer NOT NULL DEFAULT nextval('user_id_seq'::regclass),
+  username character varying NOT NULL UNIQUE,
+  email character varying NOT NULL UNIQUE,
+  CONSTRAINT user_pkey PRIMARY KEY (id)
+);
+CREATE TABLE public.user_preferences (
+  id integer NOT NULL DEFAULT nextval('user_preferences_id_seq'::regclass),
+  user_id character varying NOT NULL,
+  favorite_channels text,
+  recent_channels text,
+  quality_preference character varying,
+  volume_level double precision,
+  subtitle_enabled boolean,
+  subtitle_language character varying,
+  created_at timestamp without time zone,
+  updated_at timestamp without time zone,
+  CONSTRAINT user_preferences_pkey PRIMARY KEY (id)
+);
+CREATE TABLE public.xtream_connections (
+  id integer NOT NULL DEFAULT nextval('xtream_connections_id_seq'::regclass),
+  server_url character varying NOT NULL,
+  username character varying NOT NULL,
+  password character varying NOT NULL,
+  is_active boolean,
+  created_at timestamp without time zone,
+  last_used timestamp without time zone,
+  last_synced_at timestamp without time zone,
+  server_info text,
+  user_info text,
+  CONSTRAINT xtream_connections_pkey PRIMARY KEY (id)
+);
+
+
+
+
+	Name	Description	Rows (Estimated)	Size (Estimated)	Realtime Enabled	
+categories
+
+No description
+
+1972	280 kB	
+8 columns
+
+channels
+
+Tabela para armazenar os canais de TV ao vivo do Xtream.	1539	448 kB	
+20 columns
+
+epg_programs
+
+No description
+
+0	16 kB	
+10 columns
+
+movies
+
+Tabela para armazenar os streams de VOD (filmes) do Xtream.	18 080	5136 kB	
+18 columns
+
+series_list
+
+Tabela para armazenar as séries do Xtream.	7700	5440 kB	
+25 columns
+
+user
+
+No description
+
+0	24 kB	
+3 columns
+
+user_preferences
+
+No description
+
+1	32 kB	
+10 columns
+
+xtream_connections
+
+No description
+
+1	32 kB	
+10 columns
+

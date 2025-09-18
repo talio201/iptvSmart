@@ -1,0 +1,16 @@
+{
+  "name": "local-proxy-server",
+  "version": "1.0.0",
+  "description": "Local Node.js proxy server for Xtream API",
+  "main": "proxy.js",
+  "scripts": {
+    "start": "node proxy.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "node-fetch": "^2.7.0"
+  },
+  "author": "",
+  "license": "ISC"
+}

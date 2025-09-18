@@ -1,0 +1,25 @@
+{
+    "name": "manus",
+    "version": "1.0.0",
+    "description": "IPTV Smart Backend Proxy",
+    "main": "proxy.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "commonjs",
+    "dependencies": {
+        "express": "^4.19.2",
+        "node-fetch": "^2.7.0"
+    },
+    "devDependencies": {
+        "@babel/preset-flow": "^7.27.1",
+        "@types/react": "^19.1.12",
+        "@types/react-dom": "^19.1.9",
+        "cors-anywhere": "^0.4.4",
+        "gh-pages": "^6.3.0",
+        "typescript": "^5.9.2"
+    }
+}

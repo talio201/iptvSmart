@@ -1,0 +1,50 @@
+# Arquivos de Backup e Temporários
+*.zip
+*.tar.gz
+*.log
+temp_request_test.py
+MANUS_backup_pre-refatoracao.tar.gz
+
+# Dependências e Build Outputs
+/node_modules/
+/iptv-frontend/dist/
+/iptv-frontend/node_modules/
+/proxy-server/node_modules/
+
+# Python
+/iptv-backend/venv/
+/iptv-backend/instance/
+/iptv-backend/__pycache__/
+/iptv-backend/.env
+__pycache__/
+*.pyc
+
+# Arquivos de Ambiente
+.env
+.env.*
+!.env.example
+!.env.development
+!.env.production
+
+# Supabase
+/supabase/.temp/
+
+# Metadados de SO e IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+/.vercel/
+
+# Arquivos específicos do projeto (mantidos do original)
+iptv-backend/run_flask.bat
+invoke_edge_function.ps1
+get_ngrok_url.py
+live_10.json
+invoke_edge_function
+proxy.js
+register_user.sh
+sim/
+temp_request.py
+test_auth.ps1
+tyzenIptv/
