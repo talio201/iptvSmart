@@ -44,9 +44,11 @@ function App() {
           setError('No Xtream connection found for this user.');
         }
       } else {
+        console.log('Login failed with data:', data);
         setError(data.error || 'Login failed');
       }
     } catch (err) {
+      console.error('Caught an exception during login:', err);
       setError('An error occurred during login.');
     } finally {
       setIsLoading(false);
