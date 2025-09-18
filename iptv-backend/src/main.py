@@ -11,7 +11,7 @@ CORS(app, resources={
     r"/api/*": {
         "origins": [
             "http://localhost:5173",
-            "https://talio201.github.io/iptvSmart"
+            "https://talio201.github.io"
         ]
     }
 })
