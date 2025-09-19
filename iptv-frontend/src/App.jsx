@@ -41,8 +41,19 @@ function App() {
         const connectionsResponse = await fetch(`${API_BASE}/api/iptv/connections`);
         const connectionsData = await connectionsResponse.json();
         if (connectionsData.success && connectionsData.connections.length > 0) {
+          const connectionId = connectionsData.connections[0].id;
           setConnectionData(connectionsData.connections[0]);
-          setCurrentScreen('dashboard');
+
+          // Fetch dashboard data
+          const dashboardResponse = await fetch(`${API_BASE}/api/iptv/dashboard/${connectionId}`);
+          const dashboardData = await dashboardResponse.json();
+
+          if (dashboardData.success) {
+            setDashboardData(dashboardData.dashboard);
+            setCurrentScreen('dashboard');
+          } else {
+            setError(dashboardData.error || 'Failed to load dashboard data.');
+          }
         } else {
           setError('No Xtream connection found for this user.');
         }
