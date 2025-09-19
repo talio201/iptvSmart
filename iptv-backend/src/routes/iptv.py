@@ -209,59 +209,46 @@ def get_all_streams_by_category(connection_id, stream_type):
 
 @iptv_bp.route('/dashboard/<int:connection_id>', methods=['GET'])
 def get_dashboard_data(connection_id):
-    """Retorna dados consolidados para o dashboard, buscando-os AO VIVO da API Xtream."""
+    """Retorna dados consolidados para o dashboard, lendo diretamente das tabelas do Supabase."""
     try:
         service = get_xtream_service()
+        supabase = service.supabase
 
-        # As chamadas de serviço agora buscam dados ao vivo da API Xtream
-        # Elas precisam do connection_id para buscar as credenciais no Supabase antes de chamar a API Xtream
+        # 1. Pega informações da conexão (user_info, server_info)
+        connection_req = supabase.from_('xtream_connections').select('user_info, server_info').eq('id', connection_id).single().execute()
+        if not connection_req.data:
+            return jsonify({'success': False, 'error': 'Conexão não encontrada.'}), 404
         
-        # Usar ThreadPoolExecutor para fazer chamadas em paralelo e acelerar
-        with ThreadPoolExecutor() as executor:
-            future_live = executor.submit(service.get_live_streams, connection_id)
-            future_vod = executor.submit(service.get_vod_streams, connection_id)
-            future_series = executor.submit(service.get_series, connection_id)
-            future_live_cat = executor.submit(service.get_live_categories, connection_id)
-            future_vod_cat = executor.submit(service.get_vod_categories, connection_id)
-            
-            # Para user_info e server_info, precisamos fazer uma chamada de autenticação
-            # Primeiro, buscar detalhes da conexão
-            conn_details_req = service.supabase.from_('xtream_connections').select('server_url, username, password, user_info, server_info').eq('id', connection_id).single().execute()
-            if not conn_details_req.data:
-                 return jsonify({'success': False, 'error': 'Conexão não encontrada.'}), 404
-            
-            conn_details = conn_details_req.data
+        user_info = connection_req.data.get('user_info', {})
+        server_info = connection_req.data.get('server_info', {})
 
-            # As informações já podem estar na tabela, usamos como fallback
-            user_info = conn_details.get('user_info', {})
-            server_info = conn_details.get('server_info', {})
-
-            live_streams_result = future_live.result()
-            vod_streams_result = future_vod.result()
-            series_result = future_series.result()
-            live_categories_result = future_live_cat.result()
-            vod_categories_result = future_vod_cat.result()
-
-        # Extrai os dados ou uma lista vazia se a chamada falhou
-        live_streams = live_streams_result.get('streams', []) if live_streams_result.get('success') else []
-        vod_streams = vod_streams_result.get('streams', []) if vod_streams_result.get('success') else []
-        series_list = series_result.get('streams', []) if series_result.get('success') else []
-        live_categories = live_categories_result.get('categories', []) if live_categories_result.get('success') else []
-        vod_categories = vod_categories_result.get('categories', []) if vod_categories_result.get('success') else []
+        # 2. Calcula estatísticas contando as linhas nas tabelas do Supabase
+        # O método `count='exact'` é uma forma eficiente de obter a contagem total.
+        live_count_req = supabase.from_('live_streams').select('id', count='exact').eq('connection_id', connection_id).execute()
+        vod_count_req = supabase.from_('vod_streams').select('id', count='exact').eq('connection_id', connection_id).execute()
+        series_count_req = supabase.from_('series').select('id', count='exact').eq('connection_id', connection_id).execute()
+        live_cat_count_req = supabase.from_('live_categories').select('id', count='exact').eq('connection_id', connection_id).execute()
+        vod_cat_count_req = supabase.from_('vod_categories').select('id', count='exact').eq('connection_id', connection_id).execute()
 
         stats = {
-            'total_live_channels': len(live_streams),
-            'total_vod': len(vod_streams),
-            'total_series': len(series_list),
-            'total_categories': len(live_categories) + len(vod_categories)
+            'total_live_channels': live_count_req.count or 0,
+            'total_vod': vod_count_req.count or 0,
+            'total_series': series_count_req.count or 0,
+            'total_categories': (live_cat_count_req.count or 0) + (vod_cat_count_req.count or 0)
         }
+
+        # 3. Verifica se a sincronização é necessária
+        is_sync_needed = (stats['total_live_channels'] + stats['total_vod'] + stats['total_series']) == 0
+
+        # 4. Pega canais recentes (placeholder, pois requer uma tabela/lógica específica)
+        recent_channels = []
 
         dashboard_data = {
             'user_info': user_info,
             'server_info': server_info,
             'statistics': stats,
-            'recent_channels': [], # Canais recentes não estão disponíveis no modo ao vivo
-            'is_sync_needed': False # A sincronização não é mais o modelo principal
+            'recent_channels': recent_channels,
+            'is_sync_needed': is_sync_needed
         }
 
         return jsonify({'success': True, 'dashboard': dashboard_data}), 200

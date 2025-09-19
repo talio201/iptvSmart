@@ -1,4 +1,5 @@
 import requests
+import logging
 import json
 import os
 import time
@@ -94,6 +95,7 @@ class XtreamService:
     def _make_xtream_request(self, connection_id, action, params=None):
         conn_details = self._get_xtream_connection_details(connection_id)
         if not conn_details:
+            logging.error(f"Xtream connection details not found for connection_id: {connection_id}")
             return {'success': False, 'error': 'Xtream connection details not found.'}
 
         base_url = conn_details['server_url'].rstrip('/')
@@ -113,12 +115,32 @@ class XtreamService:
             url_params.update(params)
 
         try:
-            response = requests.get(base_url, params=url_params, timeout=10)
+            logging.warning(f"Making Xtream API request to {base_url} for action: {action}") # Changed to WARNING
+            headers = {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+            }
+            response = requests.get(base_url, params=url_params, headers=headers, timeout=10)
             response.raise_for_status() # Raise HTTPError for bad responses (4xx or 5xx)
-            print(f"Xtream API Response for {action}: {response.text}") # ADDED LOGGING
-            return {'success': True, 'data': response.json()}
+            
+            # Check for empty or non-JSON response
+            if not response.text:
+                logging.warning(f"Xtream API returned empty response for action: {action}")
+                return {'success': True, 'data': []} # Return success with empty data
+
+            # Try to parse JSON, handle potential errors
+            try:
+                data = response.json()
+            except json.JSONDecodeError:
+                logging.error(f"Failed to decode JSON from Xtream API for action: {action}. Response text: {response.text}")
+                return {'success': False, 'error': 'Failed to decode JSON from Xtream API.'}
+
+            logging.warning(f"Successfully received data from Xtream API for action: {action}. Data: {data}") # Changed to WARNING
+            return {'success': True, 'data': data}
+        except requests.exceptions.Timeout:
+            logging.error(f"Xtream API request timed out for action: {action} at URL: {base_url}")
+            return {'success': False, 'error': f'Xtream API request timed out for action: {action}'}
         except requests.exceptions.RequestException as e:
-            print(f"Xtream API request failed for {action}: {e}") # ADDED LOGGING
+            logging.error(f"Xtream API request failed for {action}: {e}")
             return {'success': False, 'error': f'Xtream API request failed: {e}'}
 
     # --- Category Methods ---
@@ -236,8 +258,27 @@ class XtreamService:
         return {'success': False, 'error': 'Clear local data not implemented.'}
 
     def get_stream_url(self, connection_id, stream_id, stream_type):
-        # Placeholder for generating stream URL
-        return {'success': False, 'error': 'Get stream URL not implemented.'}
+        """Builds the final, playable stream URL."""
+        try:
+            conn_details = self._get_xtream_connection_details(connection_id)
+            if not conn_details:
+                return {'success': False, 'error': 'Xtream connection details not found.'}
+
+            server_url = conn_details['server_url'].rstrip('/')
+            username = conn_details['username']
+            password = conn_details['password']
+            
+            # The stream_type should be 'movie' for VOD content as per Xtream standards.
+            type_for_url = 'movie' if stream_type == 'vod' else stream_type
+
+            # Format: http://<server_url>/<type>/<username>/<password>/<stream_id>
+            # The player component will add the appropriate extension (e.g., .m3u8)
+            stream_url = f"{server_url}/{type_for_url}/{username}/{password}/{stream_id}"
+
+            return {'success': True, 'url': stream_url}
+        except Exception as e:
+            logging.error(f"Error generating stream URL for connection {connection_id}, stream {stream_id}: {e}")
+            return {'success': False, 'error': 'Failed to generate stream URL.'}
 
     def get_series_info(self, connection_id, series_id):
         # Placeholder for getting series info
