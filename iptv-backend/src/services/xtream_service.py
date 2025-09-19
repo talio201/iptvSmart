@@ -240,10 +240,95 @@ class XtreamService:
         except requests.exceptions.RequestException as e:
             return {'success': False, 'error': f'Xtream API authentication failed: {e}'}
 
-    def request_sync(self, connection_id):
-        # This method is now largely symbolic as data is fetched directly.
-        # Could be used to trigger a re-fetch and update of cached info if needed.
-        return {'success': True, 'message': 'Data is fetched directly from Xtream API.'}
+    def run_full_sync(self, connection_id):
+        """
+        Performs a full data synchronization from the Xtream API to Supabase tables.
+        Deletes old data and inserts new data.
+        """
+        logging.warning(f"Starting full sync for connection_id: {connection_id}")
+        try:
+            # Step 1: Clear old data for this connection
+            logging.warning(f"Sync {connection_id}: Deleting old data...")
+            self.supabase.from_('series').delete().eq('connection_id', connection_id).execute()
+            self.supabase.from_('vod_streams').delete().eq('connection_id', connection_id).execute()
+            self.supabase.from_('live_streams').delete().eq('connection_id', connection_id).execute()
+            self.supabase.from_('series_categories').delete().eq('connection_id', connection_id).execute()
+            self.supabase.from_('vod_categories').delete().eq('connection_id', connection_id).execute()
+            self.supabase.from_('live_categories').delete().eq('connection_id', connection_id).execute()
+            logging.warning(f"Sync {connection_id}: Old data deleted.")
+
+            # Step 2: Fetch new data from Xtream API
+            logging.warning(f"Sync {connection_id}: Fetching new data from Xtream API...")
+            live_cats_res = self.get_live_categories(connection_id)
+            vod_cats_res = self.get_vod_categories(connection_id)
+            series_cats_res = self.get_series_categories(connection_id)
+            live_streams_res = self.get_live_streams(connection_id)
+            vod_streams_res = self.get_vod_streams(connection_id)
+            series_res = self.get_series(connection_id)
+            logging.warning(f"Sync {connection_id}: New data fetched.")
+
+            # Step 3: Insert new data into Supabase
+            logging.warning(f"Sync {connection_id}: Inserting new data into Supabase...")
+            if live_cats_res.get('success') and live_cats_res.get('categories'):
+                for item in live_cats_res['categories']: item['connection_id'] = connection_id
+                self.supabase.from_('live_categories').insert(live_cats_res['categories']).execute()
+
+            if vod_cats_res.get('success') and vod_cats_res.get('categories'):
+                for item in vod_cats_res['categories']: item['connection_id'] = connection_id
+                self.supabase.from_('vod_categories').insert(vod_cats_res['categories']).execute()
+
+            if series_cats_res.get('success') and series_cats_res.get('categories'):
+                for item in series_cats_res['categories']: item['connection_id'] = connection_id
+                self.supabase.from_('series_categories').insert(series_cats_res['categories']).execute()
+
+            if live_streams_res.get('success') and live_streams_res.get('streams'):
+                streams_to_insert = [{
+                    'connection_id': connection_id,
+                    'stream_id': s.get('stream_id'),
+                    'name': s.get('name'),
+                    'stream_icon': s.get('stream_icon'),
+                    'category_id': s.get('category_id'),
+                    'epg_channel_id': s.get('epg_channel_id'),
+                    'added': s.get('added'),
+                    'is_adult': s.get('is_adult', '0')
+                } for s in live_streams_res['streams']]
+                if streams_to_insert: self.supabase.from_('live_streams').insert(streams_to_insert).execute()
+
+            if vod_streams_res.get('success') and vod_streams_res.get('streams'):
+                streams_to_insert = [{
+                    'connection_id': connection_id,
+                    'stream_id': s.get('stream_id'),
+                    'name': s.get('name'),
+                    'stream_icon': s.get('stream_icon'),
+                    'category_id': s.get('category_id'),
+                    'rating': s.get('rating'),
+                    'added': s.get('added')
+                } for s in vod_streams_res['streams']]
+                if streams_to_insert: self.supabase.from_('vod_streams').insert(streams_to_insert).execute()
+
+            if series_res.get('success') and series_res.get('streams'):
+                series_to_insert = [{
+                    'connection_id': connection_id,
+                    'series_id': s.get('series_id'),
+                    'name': s.get('name'),
+                    'cover': s.get('cover'),
+                    'plot': s.get('plot'),
+                    'cast': s.get('cast'),
+                    'director': s.get('director'),
+                    'genre': s.get('genre'),
+                    'release_date': s.get('releaseDate'),
+                    'last_modified': s.get('last_modified'),
+                    'rating': s.get('rating'),
+                    'category_id': s.get('category_id')
+                } for s in series_res['streams']]
+                if series_to_insert: self.supabase.from_('series').insert(series_to_insert).execute()
+            
+            logging.warning(f"Sync for connection {connection_id} completed successfully.")
+            return {'success': True, 'message': 'Synchronization completed.'}
+
+        except Exception as e:
+            logging.error(f"Error during sync for connection {connection_id}: {e}", exc_info=True)
+            return {'success': False, 'error': str(e)}
 
     def search_streams(self, connection_id, stream_type, query_text):
         # Placeholder for stream search

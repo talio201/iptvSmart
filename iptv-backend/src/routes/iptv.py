@@ -3,12 +3,17 @@ from urllib.parse import urljoin
 import requests
 import urllib3
 import os
+import logging
+from concurrent.futures import ThreadPoolExecutor
 from src.services.xtream_service import XtreamService
 from flask_cors import CORS # Import CORS
 from concurrent.futures import ThreadPoolExecutor
 
 iptv_bp = Blueprint('iptv', __name__)
 CORS(iptv_bp) # Apply CORS to the blueprint
+
+# Executor for background tasks
+executor = ThreadPoolExecutor(max_workers=2)
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -53,11 +58,13 @@ def get_connections():
 
 @iptv_bp.route('/request_sync/<int:connection_id>', methods=['POST'])
 def request_sync(connection_id):
-    """Requests a manual data synchronization."""
+    """Requests a manual data synchronization to run in the background."""
     try:
-        result = get_xtream_service().request_sync(connection_id)
-        return jsonify(result), 200 if result.get('success') else 500
+        # Submit the long-running task to the executor
+        executor.submit(get_xtream_service().run_full_sync, connection_id)
+        return jsonify({'success': True, 'message': 'A sincronização foi iniciada em segundo plano. Pode levar vários minutos para ser concluída.'}), 202
     except Exception as e:
+        logging.error(f"Failed to submit sync job for connection {connection_id}: {e}")
         return jsonify({'success': False, 'error': str(e)}), 500
 
 @iptv_bp.route('/categories/<int:connection_id>/<category_type>', methods=['GET'])
