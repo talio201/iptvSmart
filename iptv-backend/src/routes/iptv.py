@@ -231,7 +231,7 @@ def get_dashboard_data(connection_id):
 
         # 2. Calcula estatísticas contando as linhas nas tabelas do Supabase
         # O método `count='exact'` é uma forma eficiente de obter a contagem total.
-        live_count_req = supabase.from_('live_streams').select('id', count='exact').eq('connection_id', connection_id).execute()
+        live_count_req = supabase.from_('live_streams').select('id', count='exact').execute() # DEBUG: Removido filtro de connection_id
         vod_count_req = supabase.from_('vod_streams').select('id', count='exact').eq('connection_id', connection_id).execute()
         series_count_req = supabase.from_('series').select('id', count='exact').eq('connection_id', connection_id).execute()
         live_cat_count_req = supabase.from_('live_categories').select('id', count='exact').eq('connection_id', connection_id).execute()
