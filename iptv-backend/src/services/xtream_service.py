@@ -62,94 +62,164 @@ class XtreamService:
         except Exception as e:
             return {'success': False, 'error': str(e)}
 
+    def login(self, username, password):
+        try:
+            response = self.supabase.from_('user').select('*').eq('username', username).single().execute()
+
+            if not response.data:
+                return {'success': False, 'error': 'Invalid username or password'}
+
+            user = response.data
+            if not user.get('password'):
+                return {'success': False, 'error': 'Password not set for this user'}
+
+            if check_password_hash(user['password'], password):
+                del user['password']
+                return {'success': True, 'user': user}
+            else:
+                return {'success': False, 'error': 'Invalid username or password'}
+        except Exception as e:
+            return {'success': False, 'error': str(e)}
+
+    def _get_xtream_connection_details(self, connection_id):
+        try:
+            response = self.supabase.from_('xtream_connections').select('server_url, username, password').eq('id', connection_id).single().execute()
+            if response.data:
+                return response.data
+            return None
+        except Exception as e:
+            print(f"Error fetching Xtream connection details: {e}")
+            return None
+
+    def _make_xtream_request(self, connection_id, action, params=None):
+        conn_details = self._get_xtream_connection_details(connection_id)
+        if not conn_details:
+            return {'success': False, 'error': 'Xtream connection details not found.'}
+
+        base_url = conn_details['server_url'].rstrip('/')
+        username = conn_details['username']
+        password = conn_details['password']
+
+        # Ensure the base URL ends with player_api.php
+        if not base_url.endswith('/player_api.php'):
+            base_url = f"{base_url}/player_api.php"
+
+        url_params = {
+            'username': username,
+            'password': password,
+            'action': action,
+        }
+        if params:
+            url_params.update(params)
+
+        try:
+            response = requests.get(base_url, params=url_params, timeout=10)
+            response.raise_for_status() # Raise HTTPError for bad responses (4xx or 5xx)
+            return {'success': True, 'data': response.json()}
+        except requests.exceptions.RequestException as e:
+            return {'success': False, 'error': f'Xtream API request failed: {e}'}
+
     # --- Category Methods ---
     def get_live_categories(self, connection_id):
         try:
-            # Assuming 'categories' table has a 'type' column (e.g., 'live', 'vod', 'series')
-            response = self.supabase.from_('categories').select('*').eq('connection_id', connection_id).eq('type', 'live').execute()
-            if response.data:
-                return {'success': True, 'categories': response.data}
-            return {'success': True, 'categories': []}
+            result = self._make_xtream_request(connection_id, 'get_live_categories')
+            if result['success']:
+                return {'success': True, 'categories': result['data']}
+            return result
         except Exception as e:
             return {'success': False, 'error': str(e)}
 
     def get_vod_categories(self, connection_id):
         try:
-            response = self.supabase.from_('categories').select('*').eq('connection_id', connection_id).eq('type', 'vod').execute()
-            if response.data:
-                return {'success': True, 'categories': response.data}
-            return {'success': True, 'categories': []}
+            result = self._make_xtream_request(connection_id, 'get_vod_categories')
+            if result['success']:
+                return {'success': True, 'categories': result['data']}
+            return result
         except Exception as e:
             return {'success': False, 'error': str(e)}
 
     def get_series_categories(self, connection_id):
         try:
-            response = self.supabase.from_('categories').select('*').eq('connection_id', connection_id).eq('type', 'series').execute()
-            if response.data:
-                return {'success': True, 'categories': response.data}
-            return {'success': True, 'categories': []}
+            result = self._make_xtream_request(connection_id, 'get_series_categories')
+            if result['success']:
+                return {'success': True, 'categories': result['data']}
+            return result
         except Exception as e:
             return {'success': False, 'error': str(e)}
 
     # --- Stream Methods ---
     def get_live_streams(self, connection_id, category_id=None, page=1, page_size=50):
         try:
-            query = self.supabase.from_('channels').select('*').eq('connection_id', connection_id)
-            if category_id:
-                query = query.eq('category_id', category_id)
-            
-            # Basic pagination
-            offset = (page - 1) * page_size
-            query = query.range(offset, offset + page_size - 1)
-
-            response = query.execute()
-            if response.data:
-                return {'success': True, 'streams': response.data}
-            return {'success': True, 'streams': []}
+            params = {'category_id': category_id} if category_id else {}
+            result = self._make_xtream_request(connection_id, 'get_live_streams', params)
+            if result['success']:
+                # Xtream API usually doesn't have pagination for get_live_streams directly
+                # We'll simulate it here if needed, or return all
+                streams = result['data']
+                # Apply manual pagination if Xtream API doesn't support it
+                start_index = (page - 1) * page_size
+                end_index = start_index + page_size
+                paginated_streams = streams[start_index:end_index]
+                return {'success': True, 'streams': paginated_streams, 'pagination': {'has_more': end_index < len(streams)}}
+            return result
         except Exception as e:
             return {'success': False, 'error': str(e)}
 
     def get_vod_streams(self, connection_id, category_id=None, page=1, page_size=50):
         try:
-            query = self.supabase.from_('movies').select('*').eq('connection_id', connection_id)
-            if category_id:
-                query = query.eq('category_id', category_id)
-            
-            offset = (page - 1) * page_size
-            query = query.range(offset, offset + page_size - 1)
-
-            response = query.execute()
-            if response.data:
-                return {'success': True, 'streams': response.data}
-            return {'success': True, 'streams': []}
+            params = {'category_id': category_id} if category_id else {}
+            result = self._make_xtream_request(connection_id, 'get_vod_streams', params)
+            if result['success']:
+                streams = result['data']
+                start_index = (page - 1) * page_size
+                end_index = start_index + page_size
+                paginated_streams = streams[start_index:end_index]
+                return {'success': True, 'streams': paginated_streams, 'pagination': {'has_more': end_index < len(streams)}}
+            return result
         except Exception as e:
             return {'success': False, 'error': str(e)}
 
     def get_series(self, connection_id, category_id=None, page=1, page_size=50):
         try:
-            query = self.supabase.from_('series_list').select('*').eq('connection_id', connection_id)
-            if category_id:
-                query = query.eq('category_id', category_id)
-            
-            offset = (page - 1) * page_size
-            query = query.range(offset, offset + page_size - 1)
-
-            response = query.execute()
-            if response.data:
-                return {'success': True, 'streams': response.data}
-            return {'success': True, 'streams': []}
+            params = {'category_id': category_id} if category_id else {}
+            result = self._make_xtream_request(connection_id, 'get_series', params)
+            if result['success']:
+                streams = result['data']
+                start_index = (page - 1) * page_size
+                end_index = start_index + page_size
+                paginated_streams = streams[start_index:end_index]
+                return {'success': True, 'streams': paginated_streams, 'pagination': {'has_more': end_index < len(streams)}}
+            return result
         except Exception as e:
             return {'success': False, 'error': str(e)}
 
     # --- Other Methods (Placeholders for now) ---
     def authenticate(self, server_url, username, password):
-        # This method seems to be for authenticating with an external Xtream server.
-        # Placeholder implementation.
-        return {'success': False, 'error': 'Authentication with external Xtream server not implemented.'}
+        # This method will now make the initial Xtream API call to get user and server info.
+        # It will return user_info and server_info directly from Xtream API.
+        base_url = server_url.rstrip('/')
+        if not base_url.endswith('/player_api.php'):
+            base_url = f"{base_url}/player_api.php"
+
+        url_params = {
+            'username': username,
+            'password': password,
+        }
+
+        try:
+            response = requests.get(base_url, params=url_params, timeout=10)
+            response.raise_for_status()
+            data = response.json()
+            if data.get('user_info') and data.get('server_info'):
+                return {'success': True, 'user_info': data['user_info'], 'server_info': data['server_info']}
+            return {'success': False, 'error': data.get('user_info', {}).get('auth', 'Authentication failed.')}
+        except requests.exceptions.RequestException as e:
+            return {'success': False, 'error': f'Xtream API authentication failed: {e}'}
 
     def request_sync(self, connection_id):
-        # Placeholder for manual sync trigger
-        return {'success': False, 'error': 'Manual sync not implemented.'}
+        # This method is now largely symbolic as data is fetched directly.
+        # Could be used to trigger a re-fetch and update of cached info if needed.
+        return {'success': True, 'message': 'Data is fetched directly from Xtream API.'}
 
     def search_streams(self, connection_id, stream_type, query_text):
         # Placeholder for stream search
