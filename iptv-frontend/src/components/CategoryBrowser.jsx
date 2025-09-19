@@ -62,7 +62,9 @@ export default function CategoryBrowser({
   // Fetch categories
   useEffect(() => {
     const fetchCategories = async () => {
+      console.log('CategoryBrowser: Fetching categories with connectionData:', connectionData, 'contentType:', contentType);
       if (!connectionData || !connectionData.id || !contentType) {
+        console.log('CategoryBrowser: Skipping fetch due to missing data.');
         setIsLoadingCategories(false);
         return;
       }
