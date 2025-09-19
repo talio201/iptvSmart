@@ -37,7 +37,6 @@ const fetchStreamsPage = async (connectionId, contentType, categoryId, page) => 
 export default function CategoryBrowser({
   connectionData,
   contentType,
-  categories,
   onBack,
   onSelectCategory,
   onPlayStream,
@@ -56,6 +55,37 @@ export default function CategoryBrowser({
   const [filteredStreams, setFilteredStreams] = useState([]) // Streams filtrados pela busca
   const scrollContainerRef = useRef(null)
   const listRef = useRef(null) // Ref para react-window
+
+  const [categories, setCategories] = useState([]);
+  const [isLoadingCategories, setIsLoadingCategories] = useState(true);
+
+  // Fetch categories
+  useEffect(() => {
+    const fetchCategories = async () => {
+      if (!connectionData || !connectionData.id || !contentType) {
+        setIsLoadingCategories(false);
+        return;
+      }
+      setIsLoadingCategories(true);
+      try {
+        const API_BASE = import.meta.env.VITE_API_BASE_URL || ''; // Get API base from env
+        const response = await fetch(`${API_BASE}/api/iptv/categories/${connectionData.id}/${contentType}`);
+        const data = await response.json();
+        if (data.success) {
+          setCategories(data.categories);
+        } else {
+          console.error("Failed to fetch categories:", data.error);
+          setCategories([]);
+        }
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+        setCategories([]);
+      } finally {
+        setIsLoadingCategories(false);
+      }
+    };
+    fetchCategories();
+  }, [connectionData, contentType]);
 
   // Debounce search term
   useEffect(() => {
