@@ -96,6 +96,18 @@ function App() {
             // ... other props
           />
         );
+      case 'live':
+      case 'movies':
+      case 'series':
+        // Placeholder for now, will render Dashboard again
+        return (
+          <Dashboard
+            dashboardData={dashboardData}
+            connectionData={connectionData}
+            onNavigate={handleNavigate}
+            // ... other props
+          />
+        );
       // ... (other cases)
       default:
         return <LoginScreen onLogin={handleLogin} isLoading={isLoading} error={error} />;
