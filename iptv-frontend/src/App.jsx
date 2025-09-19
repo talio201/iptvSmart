@@ -99,6 +99,10 @@ function App() {
       case 'live':
       case 'movies':
       case 'series':
+      case 'settings':
+      case 'epg':
+      case 'favorites':
+      case 'search':
         // Placeholder for now, will render Dashboard again
         return (
           <Dashboard
