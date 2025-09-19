@@ -11,6 +11,9 @@ function App() {
   const [dashboardData, setDashboardData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const handleNavigate = (screen) => {
+    setCurrentScreen(screen);
+  };
   // ... (keep other state variables)
 
   const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
