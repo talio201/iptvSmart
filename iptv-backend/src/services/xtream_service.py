@@ -115,8 +115,10 @@ class XtreamService:
         try:
             response = requests.get(base_url, params=url_params, timeout=10)
             response.raise_for_status() # Raise HTTPError for bad responses (4xx or 5xx)
+            print(f"Xtream API Response for {action}: {response.text}") # ADDED LOGGING
             return {'success': True, 'data': response.json()}
         except requests.exceptions.RequestException as e:
+            print(f"Xtream API request failed for {action}: {e}") # ADDED LOGGING
             return {'success': False, 'error': f'Xtream API request failed: {e}'}
 
     # --- Category Methods ---
