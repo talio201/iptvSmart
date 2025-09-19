@@ -5,6 +5,7 @@ import urllib3
 import os
 from src.services.xtream_service import XtreamService
 from flask_cors import CORS # Import CORS
+from concurrent.futures import ThreadPoolExecutor
 
 iptv_bp = Blueprint('iptv', __name__)
 CORS(iptv_bp) # Apply CORS to the blueprint
@@ -208,41 +209,65 @@ def get_all_streams_by_category(connection_id, stream_type):
 
 @iptv_bp.route('/dashboard/<int:connection_id>', methods=['GET'])
 def get_dashboard_data(connection_id):
-    """Retorna dados consolidados para o dashboard do Supabase usando uma função RPC para performance."""
+    """Retorna dados consolidados para o dashboard, buscando-os AO VIVO da API Xtream."""
     try:
-        # 1. Pega informações da conexão (user_info, server_info)
-        connection_req = get_xtream_service().supabase.from_('xtream_connections').select('user_info, server_info').eq('id', connection_id).single().execute()
-        if not connection_req.data:
-            return jsonify({'success': False, 'error': 'Conexão não encontrada.'}), 404
+        service = get_xtream_service()
+
+        # As chamadas de serviço agora buscam dados ao vivo da API Xtream
+        # Elas precisam do connection_id para buscar as credenciais no Supabase antes de chamar a API Xtream
         
-        user_info = connection_req.data.get('user_info', {})
-        server_info = connection_req.data.get('server_info', {})
+        # Usar ThreadPoolExecutor para fazer chamadas em paralelo e acelerar
+        with ThreadPoolExecutor() as executor:
+            future_live = executor.submit(service.get_live_streams, connection_id)
+            future_vod = executor.submit(service.get_vod_streams, connection_id)
+            future_series = executor.submit(service.get_series, connection_id)
+            future_live_cat = executor.submit(service.get_live_categories, connection_id)
+            future_vod_cat = executor.submit(service.get_vod_categories, connection_id)
+            
+            # Para user_info e server_info, precisamos fazer uma chamada de autenticação
+            # Primeiro, buscar detalhes da conexão
+            conn_details_req = service.supabase.from_('xtream_connections').select('server_url, username, password, user_info, server_info').eq('id', connection_id).single().execute()
+            if not conn_details_req.data:
+                 return jsonify({'success': False, 'error': 'Conexão não encontrada.'}), 404
+            
+            conn_details = conn_details_req.data
 
-        # 2. Calcula estatísticas via RPC (muito mais rápido)
-        stats_req = get_xtream_service().supabase.rpc('get_dashboard_stats', {'p_connection_id': connection_id}).execute()
-        
-        stats = {'total_live_channels': 0, 'total_vod': 0, 'total_series': 0, 'total_categories': 0}
-        if stats_req.data:
-            stats = stats_req.data[0]
+            # As informações já podem estar na tabela, usamos como fallback
+            user_info = conn_details.get('user_info', {})
+            server_info = conn_details.get('server_info', {})
 
-        # 3. Verifica se a sincronização é necessária
-        is_sync_needed = (stats.get('total_live_channels', 0) + stats.get('total_vod', 0) + stats.get('total_series', 0)) == 0
+            live_streams_result = future_live.result()
+            vod_streams_result = future_vod.result()
+            series_result = future_series.result()
+            live_categories_result = future_live_cat.result()
+            vod_categories_result = future_vod_cat.result()
 
-        # 4. Pega canais recentes (placeholder)
-        recent_channels = []
+        # Extrai os dados ou uma lista vazia se a chamada falhou
+        live_streams = live_streams_result.get('streams', []) if live_streams_result.get('success') else []
+        vod_streams = vod_streams_result.get('streams', []) if vod_streams_result.get('success') else []
+        series_list = series_result.get('streams', []) if series_result.get('success') else []
+        live_categories = live_categories_result.get('categories', []) if live_categories_result.get('success') else []
+        vod_categories = vod_categories_result.get('categories', []) if vod_categories_result.get('success') else []
+
+        stats = {
+            'total_live_channels': len(live_streams),
+            'total_vod': len(vod_streams),
+            'total_series': len(series_list),
+            'total_categories': len(live_categories) + len(vod_categories)
+        }
 
         dashboard_data = {
             'user_info': user_info,
             'server_info': server_info,
             'statistics': stats,
-            'recent_channels': recent_channels,
-            'is_sync_needed': is_sync_needed
+            'recent_channels': [], # Canais recentes não estão disponíveis no modo ao vivo
+            'is_sync_needed': False # A sincronização não é mais o modelo principal
         }
 
         return jsonify({'success': True, 'dashboard': dashboard_data}), 200
 
     except Exception as e:
-        print(f"[XTREAM SERVICE ERROR] get_dashboard_data: {e}")
+        print(f"[ROUTE ERROR] get_dashboard_data: {e}")
         traceback_str = traceback.format_exc()
         print(traceback_str)
         return jsonify({'success': False, 'error': str(e), 'traceback': traceback_str}), 500
