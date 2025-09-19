@@ -7,26 +7,32 @@ import FavoritesScreen from './components/FavoritesScreen';
 import SearchScreen from './components/SearchScreen';
 import SettingsScreen from './components/SettingsScreen';
 
-// ... (keep other imports)
-
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
-  const [currentScreen, setCurrentScreen] = useState('dashboard');
+  const [screenStack, setScreenStack] = useState(['login']); // Start at login
   const [connectionData, setConnectionData] = useState(null);
   const [dashboardData, setDashboardData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  // The current screen is the last one in the stack
+  const currentScreen = screenStack[screenStack.length - 1];
+
   const handleNavigate = (screen) => {
-    setCurrentScreen(screen);
+    // Push the new screen onto the stack
+    setScreenStack(prevStack => [...prevStack, screen]);
   };
-  // ... (keep other state variables)
+
+  const handleBack = () => {
+    // Pop the last screen from the stack, but don't empty it
+    setScreenStack(prevStack => (prevStack.length > 1 ? prevStack.slice(0, -1) : prevStack));
+  };
 
   const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
 
   useEffect(() => {
-    // When the app loads, check if there is a logged in user in session/local storage
-    // For simplicity, we are not doing that here yet. App will always start logged out.
+    // This effect can be used to handle browser back button in the future if needed
   }, []);
 
   const handleLogin = async (credentials) => {
@@ -42,21 +48,19 @@ function App() {
       if (data.success) {
         setIsAuthenticated(true);
         setCurrentUser(data.user);
-        // After login, fetch the xtream connections for the user
-        // For now, we'll assume the first connection is the one to use
         const connectionsResponse = await fetch(`${API_BASE}/api/iptv/connections`);
         const connectionsData = await connectionsResponse.json();
         if (connectionsData.success && connectionsData.connections.length > 0) {
           const connectionId = connectionsData.connections[0].id;
           setConnectionData(connectionsData.connections[0]);
 
-          // Fetch dashboard data
           const dashboardResponse = await fetch(`${API_BASE}/api/iptv/dashboard/${connectionId}`);
           const dashboardData = await dashboardResponse.json();
 
           if (dashboardData.success) {
             setDashboardData(dashboardData.dashboard);
-            setCurrentScreen('dashboard');
+            // On successful login, reset stack to just the dashboard
+            setScreenStack(['dashboard']);
           } else {
             setError(dashboardData.error || 'Failed to load dashboard data.');
           }
@@ -80,18 +84,15 @@ function App() {
     setCurrentUser(null);
     setConnectionData(null);
     setDashboardData(null);
-    setCurrentScreen('login'); // Redirect to login screen
+    // Reset stack to the login screen
+    setScreenStack(['login']);
   };
 
-  // ... (keep other handler functions like handleNavigate, handlePlayStream, etc.)
-  // You might need to adjust them to use `currentUser` or `connectionData` as needed.
-
   const renderContent = () => {
-    if (!isAuthenticated) {
+    if (!isAuthenticated || currentScreen === 'login') {
       return <LoginScreen onLogin={handleLogin} isLoading={isLoading} error={error} />;
     }
 
-    // The rest of your renderCurrentScreen logic goes here
     switch (currentScreen) {
       case 'dashboard':
         return (
@@ -101,7 +102,6 @@ function App() {
             onNavigate={handleNavigate}
             onSearch={() => handleNavigate('search')}
             onManageConnection={() => handleNavigate('settings')}
-            // ... other props
           />
         );
       case 'live':
@@ -110,6 +110,7 @@ function App() {
             connectionData={connectionData}
             categoryType="live"
             onNavigate={handleNavigate}
+            onBack={handleBack}
           />
         );
       case 'movies':
@@ -118,6 +119,7 @@ function App() {
             connectionData={connectionData}
             categoryType="vod"
             onNavigate={handleNavigate}
+            onBack={handleBack}
           />
         );
       case 'series':
@@ -126,6 +128,7 @@ function App() {
             connectionData={connectionData}
             categoryType="series"
             onNavigate={handleNavigate}
+            onBack={handleBack}
           />
         );
       case 'settings':
@@ -133,6 +136,7 @@ function App() {
           <SettingsScreen
             onNavigate={handleNavigate}
             onLogout={handleLogout}
+            onBack={handleBack}
           />
         );
       case 'epg':
@@ -140,6 +144,7 @@ function App() {
           <EPGScreen
             connectionData={connectionData}
             onNavigate={handleNavigate}
+            onBack={handleBack}
           />
         );
       case 'favorites':
@@ -147,6 +152,7 @@ function App() {
           <FavoritesScreen
             connectionData={connectionData}
             onNavigate={handleNavigate}
+            onBack={handleBack}
           />
         );
       case 'search':
@@ -154,10 +160,20 @@ function App() {
           <SearchScreen
             connectionData={connectionData}
             onNavigate={handleNavigate}
+            onBack={handleBack}
           />
         );
       default:
-        return <LoginScreen onLogin={handleLogin} isLoading={isLoading} error={error} />;
+        // Fallback to dashboard if authenticated but screen is unknown
+        return (
+          <Dashboard
+            dashboardData={dashboardData}
+            connectionData={connectionData}
+            onNavigate={handleNavigate}
+            onSearch={() => handleNavigate('search')}
+            onManageConnection={() => handleNavigate('settings')}
+          />
+        );
     }
   };
 

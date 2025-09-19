@@ -48,16 +48,19 @@ export default function Dashboard({
     }
     setIsSyncing(true);
     try {
-      const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api/iptv';
+      // CORREÇÃO: Usar a variável de ambiente corretamente e apontar para o endpoint /api/iptv
+      const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
       const connectionId = connectionData.id || connectionData.connection_id;
-      const response = await fetch(`${API_BASE}/sync/${connectionId}`, {
+      // CORREÇÃO: Chamar a rota correta /request_sync
+      const response = await fetch(`${API_BASE}/api/iptv/request_sync/${connectionId}`, {
         method: 'POST',
       });
       const data = await response.json();
       if (data.success) {
-        alert('Sincronização iniciada com sucesso! Os dados serão atualizados em breve.');
+        // Mudar a mensagem de alerta, pois a sincronização agora é simbólica
+        alert(data.message || 'Sincronização solicitada.');
       } else {
-        alert(`Erro ao iniciar a sincronização: ${data.error}`);
+        alert(`Erro ao solicitar a sincronização: ${data.error}`);
       }
     } catch (error) {
       alert(`Erro de conexão ao tentar sincronizar: ${error.message}`);
