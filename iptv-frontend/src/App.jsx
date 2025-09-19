@@ -1,6 +1,12 @@
 import { useState, useEffect } from 'react';
 import LoginScreen from './components/LoginScreen';
 import Dashboard from './components/Dashboard';
+import CategoryBrowser from './components/CategoryBrowser';
+import EPGScreen from './components/EPGScreen';
+import FavoritesScreen from './components/FavoritesScreen';
+import SearchScreen from './components/SearchScreen';
+import SettingsScreen from './components/SettingsScreen';
+
 // ... (keep other imports)
 
 function App() {
@@ -93,26 +99,63 @@ function App() {
             dashboardData={dashboardData}
             connectionData={connectionData}
             onNavigate={handleNavigate}
+            onSearch={() => handleNavigate('search')}
+            onManageConnection={() => handleNavigate('settings')}
             // ... other props
           />
         );
       case 'live':
-      case 'movies':
-      case 'series':
-      case 'settings':
-      case 'epg':
-      case 'favorites':
-      case 'search':
-        // Placeholder for now, will render Dashboard again
         return (
-          <Dashboard
-            dashboardData={dashboardData}
+          <CategoryBrowser
             connectionData={connectionData}
+            categoryType="live"
             onNavigate={handleNavigate}
-            // ... other props
           />
         );
-      // ... (other cases)
+      case 'movies':
+        return (
+          <CategoryBrowser
+            connectionData={connectionData}
+            categoryType="vod"
+            onNavigate={handleNavigate}
+          />
+        );
+      case 'series':
+        return (
+          <CategoryBrowser
+            connectionData={connectionData}
+            categoryType="series"
+            onNavigate={handleNavigate}
+          />
+        );
+      case 'settings':
+        return (
+          <SettingsScreen
+            onNavigate={handleNavigate}
+            onLogout={handleLogout}
+          />
+        );
+      case 'epg':
+        return (
+          <EPGScreen
+            connectionData={connectionData}
+            onNavigate={handleNavigate}
+          />
+        );
+      case 'favorites':
+        return (
+          <FavoritesScreen
+            connectionData={connectionData}
+            onNavigate={handleNavigate}
+          />
+        );
+      case 'search':
+        return (
+          <SearchScreen
+            connectionData={connectionData}
+            onNavigate={handleNavigate}
+          />
+        );
       default:
         return <LoginScreen onLogin={handleLogin} isLoading={isLoading} error={error} />;
     }
