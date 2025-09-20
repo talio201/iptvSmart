@@ -241,7 +241,7 @@ export default function CategoryBrowser({
   }, [filteredStreams, viewMode, isFavorite, onPlayStream, onToggleFavorite, hasMore, isFetchingStreams, fetchAndSetStreams, selectedCategory, currentPage, contentType])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white flex flex-col">
       {/* Header */}
       <header className="bg-black/50 backdrop-blur-sm border-b border-purple-500/30 p-4">
         <div className="flex items-center justify-between">
