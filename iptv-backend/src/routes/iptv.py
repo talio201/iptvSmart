@@ -104,13 +104,14 @@ def get_streams(connection_id, stream_type):
     try:
         category_id = request.args.get('category_id')
         page = request.args.get('page', 1, type=int)
+        limit = request.args.get('limit', 50, type=int) # Add limit parameter
 
         if stream_type == 'live':
             result = get_xtream_service().get_live_streams(connection_id, category_id, page)
         elif stream_type == 'vod':
             result = get_xtream_service().get_vod_streams(connection_id, category_id, page)
         elif stream_type == 'series':
-            result = get_xtream_service().get_series(connection_id, category_id, page)
+            result = get_xtream_service().get_series(connection_id, category_id, page, limit)
         else:
             return jsonify({'success': False, 'error': 'Tipo de stream inválido'}), 400
         

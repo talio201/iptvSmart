@@ -30,7 +30,7 @@ except Exception as e:
     sys.exit(1)
 
 # --- Helper functions (simplified from xtream_service.py) ---
-def _make_xtream_request_local(action, params=None):
+def _make_xtream_request_local(action, params=None, category_id=None):
     base_url = XTREAM_SERVER_URL.rstrip('/')
     if not base_url.endswith('/player_api.php'):
         base_url = f"{base_url}/player_api.php"
@@ -42,6 +42,8 @@ def _make_xtream_request_local(action, params=None):
     }
     if params:
         url_params.update(params)
+    if category_id:
+        url_params['category_id'] = category_id
 
     try:
         logging.info(f"Making Xtream API request to {base_url} for action: {action}")
@@ -193,33 +195,52 @@ def sync_vod_data_local():
             logging.error(f"Failed to fetch VOD categories: {vod_cats_res.get('error', 'Unknown error')}")
 
         # Insert Streams
-        if vod_streams_res.get('success') and vod_streams_res.get('data'):
-            streams_to_insert = []
-            for s in vod_streams_res['data']:
-                # Ensure stream_type is set correctly for VOD
-                streams_to_insert.append({
-                    'connection_id': CONNECTION_ID_TO_SYNC,
-                    'stream_id': s.get('stream_id'),
-                    'name': s.get('name'),
-                    'stream_icon': s.get('stream_icon'),
-                    'category_id': s.get('category_id'),
-                    'added': s.get('added'),
-                    'container_extension': s.get('container_extension'),
-                    'custom_sid': s.get('custom_sid'),
-                    'direct_source': s.get('direct_source'),
-                    'num': s.get('num'),
-                    'rating': s.get('rating'),
-                    'rating_5based': s.get('rating_5based'),
-                    'stream_type': 'movie', # Explicitly set stream type
-                    'year': s.get('year')
-                })
-            if streams_to_insert:
-                supabase.from_('vod_streams').insert(streams_to_insert).execute()
-                logging.info(f"Inserted {len(streams_to_insert)} VOD streams.")
-            else:
-                logging.info("No VOD streams to insert.")
+        all_vod_streams_to_insert = []
+        if vod_cats_res.get('success') and vod_cats_res.get('data'):
+            for category in vod_cats_res['data']:
+                category_id = category.get('category_id')
+                if category_id:
+                    logging.info(f"Fetching VOD streams for category: {category_id}")
+                    vod_streams_for_category_res = _make_xtream_request_local('get_vod_streams', category_id=category_id)
+                    if vod_streams_for_category_res.get('success') and vod_streams_for_category_res.get('data'):
+                        for s in vod_streams_for_category_res['data']:
+                            all_vod_streams_to_insert.append({
+                                'connection_id': CONNECTION_ID_TO_SYNC,
+                                'stream_id': s.get('stream_id'),
+                                'name': s.get('name'),
+                                'stream_icon': s.get('stream_icon'),
+                                'category_id': s.get('category_id'),
+                                'added': s.get('added'),
+                                'container_extension': s.get('container_extension'),
+                                'custom_sid': s.get('custom_sid'),
+                                'direct_source': s.get('direct_source'),
+                                'num': s.get('num'),
+                                'rating': s.get('rating'),
+                                'rating_5based': s.get('rating_5based'),
+                                'stream_type': 'movie', # Explicitly set stream type
+                                'year': s.get('year')
+                            })
+                    else:
+                        logging.error(f"Failed to fetch VOD streams for category {category_id}: {vod_streams_for_category_res.get('error', 'Unknown error')}")
+                else:
+                    logging.warning(f"Category ID not found for category: {category.get('category_name')}")
         else:
-            logging.error(f"Failed to fetch VOD streams: {vod_streams_res.get('error', 'Unknown error')}")
+            logging.error(f"Failed to fetch VOD categories: {vod_cats_res.get('error', 'Unknown error')}")
+
+        if all_vod_streams_to_insert:
+            logging.info(f"Total VOD streams before dedup: {len(all_vod_streams_to_insert)}")
+            seen = set()
+            deduped_vod_streams = []
+            for stream in all_vod_streams_to_insert:
+                key = (stream['connection_id'], stream['stream_id'])
+                if key not in seen:
+                    seen.add(key)
+                    deduped_vod_streams.append(stream)
+            logging.info(f"Total VOD streams after dedup: {len(deduped_vod_streams)}")
+            supabase.from_('vod_streams').insert(deduped_vod_streams).execute()
+            logging.info(f"Inserted {len(deduped_vod_streams)} VOD streams.")
+        else:
+            logging.info("No VOD streams to insert.")
 
         logging.info(f"Local VOD sync for connection {CONNECTION_ID_TO_SYNC} completed.")
         return {'success': True, 'message': 'Local VOD sync completed.'}
@@ -293,7 +314,7 @@ def sync_series_data_local():
                         'num': s.get('num'),
                         'title': s.get('title'),
                         'year': s.get('year'),
-                        'type': s.get('stream_type') # Use stream_type from API
+                        'stream_type': s.get('stream_type') # Use stream_type from API
                     })
             elif isinstance(series_data, list):
                 # If data is already a list, iterate directly
@@ -318,14 +339,23 @@ def sync_series_data_local():
                         'num': s.get('num'),
                         'title': s.get('title'),
                         'year': s.get('year'),
-                        'type': s.get('stream_type') # Use stream_type from API
+                        'stream_type': s.get('stream_type') # Use stream_type from API
                     })
             else:
                 logging.error(f"Unexpected data format for series streams: {type(series_data)}")
 
             if streams_to_insert:
-                supabase.from_('series').insert(streams_to_insert).execute()
-                logging.info(f"Inserted {len(streams_to_insert)} Series.")
+                logging.info(f"Total Series streams before dedup: {len(streams_to_insert)}")
+                seen = set()
+                deduped_series_streams = []
+                for serie in streams_to_insert:
+                    key = (serie['connection_id'], serie['series_id'])
+                    if key not in seen:
+                        seen.add(key)
+                        deduped_series_streams.append(serie)
+                logging.info(f"Total Series streams after dedup: {len(deduped_series_streams)}")
+                supabase.from_('series').insert(deduped_series_streams).execute()
+                logging.info(f"Inserted {len(deduped_series_streams)} Series.")
             else:
                 logging.info("No Series to insert.")
         else:

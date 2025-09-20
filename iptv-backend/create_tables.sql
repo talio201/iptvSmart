@@ -24,7 +24,7 @@ CREATE TABLE public.vod_categories (
     category_id TEXT NOT NULL,
     category_name TEXT,
     parent_id INT,
-    category_type TEXT, -- ADDED THIS LINE
+    category_type TEXT,
     created_at TIMESTAMPTZ DEFAULT NOW(),
     UNIQUE(connection_id, category_id)
 );
@@ -36,7 +36,7 @@ CREATE TABLE public.series_categories (
     category_id TEXT NOT NULL,
     category_name TEXT,
     parent_id INT,
-    category_type TEXT, -- ADDED THIS LINE
+    category_type TEXT,
     created_at TIMESTAMPTZ DEFAULT NOW(),
     UNIQUE(connection_id, category_id)
 );
@@ -62,6 +62,7 @@ CREATE TABLE public.vod_streams (
     connection_id BIGINT REFERENCES public.xtream_connections(id) ON DELETE CASCADE,
     stream_id INT NOT NULL,
     "name" TEXT,
+    title TEXT,
     stream_icon TEXT,
     category_id TEXT,
     rating TEXT,
@@ -91,12 +92,14 @@ CREATE TABLE public.series (
     release_date TEXT,
     last_modified TEXT,
     rating TEXT,
+    rating_5based NUMERIC,
     backdrop_path TEXT,
     num INT,
     youtube_trailer TEXT,
     episode_run_time TEXT,
     title TEXT,
     year TEXT,
+    stream_type TEXT,
     category_id TEXT,
     created_at TIMESTAMPTZ DEFAULT NOW(),
     UNIQUE(connection_id, series_id)

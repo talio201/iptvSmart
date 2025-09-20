@@ -179,48 +179,65 @@ class XtreamService:
 
     # --- Stream Methods ---
     def get_live_streams(self, connection_id, category_id=None, page=1, page_size=50):
+        """Fetches live streams from Supabase with pagination."""
         try:
-            params = {'category_id': category_id} if category_id else {}
-            result = self._make_xtream_request(connection_id, 'get_live_streams', params)
-            if result['success']:
-                # Xtream API usually doesn't have pagination for get_live_streams directly
-                # We'll simulate it here if needed, or return all
-                streams = result['data']
-                # Apply manual pagination if Xtream API doesn't support it
-                start_index = (page - 1) * page_size
-                end_index = start_index + page_size
-                paginated_streams = streams[start_index:end_index]
-                return {'success': True, 'streams': paginated_streams, 'pagination': {'has_more': end_index < len(streams)}}
-            return result
+            query = self.supabase.from_('live_streams').select('*').eq('connection_id', connection_id)
+            if category_id:
+                query = query.eq('category_id', category_id)
+            
+            # Supabase pagination (range is 0-indexed)
+            start_range = (page - 1) * page_size
+            end_range = start_range + page_size - 1
+            
+            response = query.range(start_range, end_range).execute()
+            
+            # Check if there are more pages
+            # Supabase returns count in headers if count='exact' is used in select, but range doesn't provide it easily.
+            # A simpler way is to fetch one more item than page_size to check for has_more.
+            # For now, we'll assume has_more if we get page_size items.
+            has_more = len(response.data) == page_size
+
+            return {'success': True, 'streams': response.data, 'pagination': {'has_more': has_more}}
         except Exception as e:
+            logging.error(f"Error fetching live streams from Supabase for connection {connection_id}: {e}", exc_info=True)
             return {'success': False, 'error': str(e)}
 
     def get_vod_streams(self, connection_id, category_id=None, page=1, page_size=50):
+        """Fetches VOD streams from Supabase with pagination."""
         try:
-            params = {'category_id': category_id} if category_id else {}
-            result = self._make_xtream_request(connection_id, 'get_vod_streams', params)
-            if result['success']:
-                streams = result['data']
-                start_index = (page - 1) * page_size
-                end_index = start_index + page_size
-                paginated_streams = streams[start_index:end_index]
-                return {'success': True, 'streams': paginated_streams, 'pagination': {'has_more': end_index < len(streams)}}
-            return result
+            query = self.supabase.from_('vod_streams').select('*').eq('connection_id', connection_id)
+            if category_id:
+                query = query.eq('category_id', category_id)
+            
+            start_range = (page - 1) * page_size
+            end_range = start_range + page_size - 1
+            
+            response = query.range(start_range, end_range).execute()
+            
+            has_more = len(response.data) == page_size
+
+            return {'success': True, 'streams': response.data, 'pagination': {'has_more': has_more}}
         except Exception as e:
+            logging.error(f"Error fetching VOD streams from Supabase for connection {connection_id}: {e}", exc_info=True)
             return {'success': False, 'error': str(e)}
 
     def get_series(self, connection_id, category_id=None, page=1, page_size=50):
+        """Fetches series from Supabase with pagination."""
         try:
-            params = {'category_id': category_id} if category_id else {}
-            result = self._make_xtream_request(connection_id, 'get_series', params)
-            if result['success']:
-                streams = result['data']
-                start_index = (page - 1) * page_size
-                end_index = start_index + page_size
-                paginated_streams = streams[start_index:end_index]
-                return {'success': True, 'streams': paginated_streams, 'pagination': {'has_more': end_index < len(streams)}}
-            return result
+            query = self.supabase.from_('series').select('*').eq('connection_id', connection_id)
+            if category_id:
+                query = query.eq('category_id', category_id)
+            
+            start_range = (page - 1) * page_size
+            end_range = start_range + page_size - 1
+            
+            response = query.range(start_range, end_range).execute()
+            
+            has_more = len(response.data) == page_size
+
+            return {'success': True, 'streams': response.data, 'pagination': {'has_more': has_more}}
         except Exception as e:
+            logging.error(f"Error fetching series from Supabase for connection {connection_id}: {e}", exc_info=True)
             return {'success': False, 'error': str(e)}
 
     # --- Other Methods (Placeholders for now) ---
