@@ -181,7 +181,17 @@ def proxy():
         }
         
         req = requests.get(url, stream=True, timeout=30, headers=headers, verify=False)
-        req.raise_for_status()
+
+        # Check if the request to the target was successful
+        if req.status_code >= 400:
+            # Return a 502 Bad Gateway error to the client
+            return jsonify({
+                'success': False,
+                'error': 'Proxy target failed',
+                'target_status': req.status_code,
+                'target_reason': req.reason,
+                'target_url': url
+            }), 502
 
         content_type = req.headers.get('content-type', '').lower()
 
@@ -207,11 +217,6 @@ def proxy():
         else:
             return Response(stream_with_context(req.iter_content(chunk_size=1024)), content_type=content_type)
 
-    except requests.exceptions.HTTPError as e:
-        return jsonify({
-            'success': False, 
-            'error': f'HTTP Error from target: {e.response.status_code} {e.response.reason}'
-        }), 500
     except requests.exceptions.Timeout:
         return jsonify({'success': False, 'error': 'Timeout ao acessar a URL do stream'}), 504
     except Exception as e:
