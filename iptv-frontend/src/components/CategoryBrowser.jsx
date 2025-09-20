@@ -75,6 +75,10 @@ export default function CategoryBrowser({
         const data = await response.json();
         if (data.success) {
           setCategories(data.categories);
+          if (data.categories.length > 0 && !selectedCategory) {
+            setSelectedCategory(data.categories[0]);
+            onSelectCategory(data.categories[0].category_id); // Notifica o componente pai
+          }
         } else {
           console.error("Failed to fetch categories:", data.error);
           setCategories([]);
@@ -126,15 +130,29 @@ export default function CategoryBrowser({
 
   // Função para buscar e acumular streams
   const fetchAndSetStreams = useCallback(async (categoryId, pageNum, reset = false) => {
-    if (!connectionData || !connectionData.id || !categoryId) return
-    if (isFetchingStreams && !reset) return // Evita múltiplas requisições
-    if (!hasMore && !reset) return // Não busca se não houver mais páginas e não for reset
+    console.log(`CategoryBrowser: fetchAndSetStreams called for category ${categoryId}, page ${pageNum}, reset: ${reset}`);
+    if (!connectionData || !connectionData.id || !categoryId) {
+      console.log('CategoryBrowser: Skipping fetchAndSetStreams due to missing connectionData or categoryId.');
+      return;
+    }
+    if (isFetchingStreams && !reset) {
+      console.log('CategoryBrowser: Skipping fetchAndSetStreams due to ongoing fetch.');
+      return; // Evita múltiplas requisições
+    }
+    if (!hasMore && !reset) {
+      console.log('CategoryBrowser: Skipping fetchAndSetStreams due to no more pages.');
+      return; // Não busca se não houver mais páginas e não for reset
+    }
 
     setIsFetchingStreams(true)
     try {
       const data = await fetchStreamsPage(connectionData.id, contentType, categoryId, pageNum)
       if (data.success) {
-        setAllStreams(prevStreams => (reset ? data.streams : [...prevStreams, ...data.streams]))
+        setAllStreams(prevStreams => {
+          const newStreams = reset ? data.streams : [...prevStreams, ...data.streams];
+          console.log(`CategoryBrowser: setAllStreams - new total streams: ${newStreams.length}`);
+          return newStreams;
+        })
         setCurrentPage(pageNum)
         setHasMore(data.pagination.has_more)
       } else {
@@ -157,6 +175,7 @@ export default function CategoryBrowser({
   }, [selectedCategory, allStreams.length, isFetchingStreams, fetchAndSetStreams])
 
   const handleCategorySelect = (category) => {
+    console.log('CategoryBrowser: Category selected:', category);
     setSearchTerm('') // Clear search when category changes
     setSelectedCategory(category)
     onSelectCategory(category.category_id) // Notifica o componente pai
