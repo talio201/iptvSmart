@@ -370,7 +370,7 @@ export default function CategoryBrowser({
               </h3>
             </div>
 
-            <div className="flex-1">
+            <div className="flex-1 h-full"> {/* This div wraps AutoSizer */}
               <AutoSizer>
                 {({ height, width }) => {
                   console.log('AutoSizer dimensions: ', { height, width }); // Added for debugging
