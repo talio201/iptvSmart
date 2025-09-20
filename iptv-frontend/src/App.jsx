@@ -108,7 +108,7 @@ function App() {
         return (
           <CategoryBrowser
             connectionData={connectionData}
-            categoryType="live"
+            contentType="live"
             onNavigate={handleNavigate}
             onBack={handleBack}
           />
@@ -117,7 +117,7 @@ function App() {
         return (
           <CategoryBrowser
             connectionData={connectionData}
-            categoryType="vod"
+            contentType="vod"
             onNavigate={handleNavigate}
             onBack={handleBack}
           />
@@ -126,7 +126,7 @@ function App() {
         return (
           <CategoryBrowser
             connectionData={connectionData}
-            categoryType="series"
+            contentType="series"
             onNavigate={handleNavigate}
             onBack={handleBack}
           />
