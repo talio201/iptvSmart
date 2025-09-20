@@ -1,0 +1,2104 @@
+CategoryBrowser: Fetching categories with connectionData: {created_at: '2025-09-11T00:31:49.864346', id: 1, is_active: true, last_synced_at: '2025-09-14T12:21:44.579367', last_used: '2025-09-14T19:25:24.22445', …} contentType: live
+index-CTh-Cvj8.js:210 CategoryBrowser: Raw categories data from backend: {categories: Array(40), success: true}
+index-CTh-Cvj8.js:210 CategoryBrowser: fetchAndSetStreams called for category 2406, page 1, reset: true
+index-CTh-Cvj8.js:210 CategoryBrowser: fetchAndSetStreams called for category 2406, page 1, reset: true
+index-CTh-Cvj8.js:210 CategoryBrowser: setAllStreams - new total streams: 4
+index-CTh-Cvj8.js:210 CategoryBrowser: setAllStreams - new total streams: 4
+index-CTh-Cvj8.js:210 CategoryBrowser: Category selected: {category_id: '1976', category_name: 'Canais | Globo Capital', connection_id: 1, created_at: '2025-09-20T19:58:26.549433+00:00', id: 85, …}
+index-CTh-Cvj8.js:210 CategoryBrowser: fetchAndSetStreams called for category 1976, page 1, reset: true
+index-CTh-Cvj8.js:210 CategoryBrowser: setAllStreams - new total streams: 46
+83index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+Bp @ index-CTh-Cvj8.js:40
+Br @ index-CTh-Cvj8.js:40
+Ec @ index-CTh-Cvj8.js:40
+xr @ index-CTh-Cvj8.js:38
+(anonymous) @ index-CTh-Cvj8.js:40Understand this error
+112index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+Ec @ index-CTh-Cvj8.js:40
+xr @ index-CTh-Cvj8.js:38
+(anonymous) @ index-CTh-Cvj8.js:40
+play
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+Bp @ index-CTh-Cvj8.js:40
+Br @ index-CTh-Cvj8.js:40
+Ec @ index-CTh-Cvj8.js:40
+xr @ index-CTh-Cvj8.js:38
+(anonymous) @ index-CTh-Cvj8.js:40
+play
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+2index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+3index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+2index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+Ec @ index-CTh-Cvj8.js:40
+xr @ index-CTh-Cvj8.js:38
+(anonymous) @ index-CTh-Cvj8.js:40
+play
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+2index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+Ec @ index-CTh-Cvj8.js:40
+xr @ index-CTh-Cvj8.js:38
+(anonymous) @ index-CTh-Cvj8.js:40
+play
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+12index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+Ec @ index-CTh-Cvj8.js:40
+xr @ index-CTh-Cvj8.js:38
+(anonymous) @ index-CTh-Cvj8.js:40
+play
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+2index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+10index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+hls-U5nqRE2E.js:40 
+            
+            
+           GET https://iptv-smart-five.vercel.app/api/iptv/proxy?url=https%3A%2F%2Ft3s7a.lat%2Flive%2Fligcel.tarcisiocarvalho%2540gmail.com%2Feu10fiz15%2F339530.m3u8 502 (Bad Gateway)
+openAndSendXhr @ hls-U5nqRE2E.js:40
+loadInternal @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+load @ hls-U5nqRE2E.js:40
+onManifestLoading @ hls-U5nqRE2E.js:40
+o.emit @ hls-U5nqRE2E.js:16
+emit @ hls-U5nqRE2E.js:40
+trigger @ hls-U5nqRE2E.js:40
+loadSource @ hls-U5nqRE2E.js:40
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+Ec @ index-CTh-Cvj8.js:40
+xr @ index-CTh-Cvj8.js:38
+(anonymous) @ index-CTh-Cvj8.js:40
+play
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+2index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+Ec @ index-CTh-Cvj8.js:40
+xr @ index-CTh-Cvj8.js:38
+(anonymous) @ index-CTh-Cvj8.js:40
+play
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+3index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+Ec @ index-CTh-Cvj8.js:40
+xr @ index-CTh-Cvj8.js:38
+(anonymous) @ index-CTh-Cvj8.js:40
+play
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+31index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+Ec @ index-CTh-Cvj8.js:40
+xr @ index-CTh-Cvj8.js:38
+(anonymous) @ index-CTh-Cvj8.js:40
+play
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+107index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+Ec @ index-CTh-Cvj8.js:40
+xr @ index-CTh-Cvj8.js:38
+(anonymous) @ index-CTh-Cvj8.js:40
+play
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+4index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+Ec @ index-CTh-Cvj8.js:40
+xr @ index-CTh-Cvj8.js:38
+(anonymous) @ index-CTh-Cvj8.js:40
+play
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+9index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+Ec @ index-CTh-Cvj8.js:40
+xr @ index-CTh-Cvj8.js:38
+(anonymous) @ index-CTh-Cvj8.js:40
+play
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+44index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+Ec @ index-CTh-Cvj8.js:40
+xr @ index-CTh-Cvj8.js:38
+(anonymous) @ index-CTh-Cvj8.js:40
+play
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+10index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+Ec @ index-CTh-Cvj8.js:40
+xr @ index-CTh-Cvj8.js:38
+(anonymous) @ index-CTh-Cvj8.js:40
+play
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error
+15index-CTh-Cvj8.js:210 Error setting up player: AbortError: The play() request was interrupted by a new load request. https://goo.gl/LdLk22
+je @ index-CTh-Cvj8.js:210
+await in je
+(anonymous) @ index-CTh-Cvj8.js:210
+cl @ index-CTh-Cvj8.js:40
+wn @ index-CTh-Cvj8.js:40
+(anonymous) @ index-CTh-Cvj8.js:40
+j @ index-CTh-Cvj8.js:25
+Z @ index-CTh-Cvj8.js:25Understand this error

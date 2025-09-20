@@ -177,14 +177,16 @@ def proxy():
         
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
-            'Referer': url
+            'Accept': '*/*',
+            'Accept-Language': 'en-US,en;q=0.9',
+            'Connection': 'keep-alive',
+            'Referer': url.split('/')[0] + '//' + url.split('/')[2] + '/' # Envia apenas o domínio raiz como referer
         }
         
         req = requests.get(url, stream=True, timeout=30, headers=headers, verify=False)
 
         # Check if the request to the target was successful
         if req.status_code >= 400:
-            # Return a 502 Bad Gateway error to the client
             return jsonify({
                 'success': False,
                 'error': 'Proxy target failed',
@@ -198,22 +200,20 @@ def proxy():
         # Se for uma playlist HLS, precisamos reescrever as URLs dos segmentos
         if 'application/vnd.apple.mpegurl' in content_type or 'application/x-mpegurl' in content_type:
             playlist_content = req.text
-            base_url = url.rsplit('/', 1)[0] + '/' # Pega a URL base do m3u8
+            base_url = url.rsplit('/', 1)[0] + '/'
 
             new_playlist = []
             for line in playlist_content.splitlines():
                 line = line.strip()
-                if not line.startswith('#'):
-                    # Constrói a URL absoluta para o segmento
+                if line and not line.startswith('#'):
                     absolute_segment_url = urljoin(base_url, line)
-                    # Reescreve a linha para que o player chame nosso proxy para o segmento
                     line = f"/api/iptv/proxy?url={requests.utils.quote(absolute_segment_url)}"
                 new_playlist.append(line)
             
             rewritten_playlist = "\n".join(new_playlist)
             return Response(rewritten_playlist, content_type=content_type)
 
-        # Para todos os outros tipos de conteúdo (ex: segmentos .ts), apenas faz o proxy direto
+        # Para todos os outros tipos de conteúdo, apenas faz o proxy direto
         else:
             return Response(stream_with_context(req.iter_content(chunk_size=1024)), content_type=content_type)
 
@@ -221,6 +221,7 @@ def proxy():
         return jsonify({'success': False, 'error': 'Timeout ao acessar a URL do stream'}), 504
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
+
 
 
 
