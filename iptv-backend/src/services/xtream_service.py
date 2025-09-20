@@ -145,30 +145,36 @@ class XtreamService:
 
     # --- Category Methods ---
     def get_live_categories(self, connection_id):
+        """Fetches live categories from Supabase."""
         try:
-            result = self._make_xtream_request(connection_id, 'get_live_categories')
-            if result['success']:
-                return {'success': True, 'categories': result['data']}
-            return result
+            response = self.supabase.from_('live_categories').select('*').eq('connection_id', connection_id).execute()
+            if response.data:
+                return {'success': True, 'categories': response.data}
+            return {'success': True, 'categories': []}
         except Exception as e:
+            logging.error(f"Error fetching live categories from Supabase for connection {connection_id}: {e}", exc_info=True)
             return {'success': False, 'error': str(e)}
 
     def get_vod_categories(self, connection_id):
+        """Fetches VOD categories from Supabase."""
         try:
-            result = self._make_xtream_request(connection_id, 'get_vod_categories')
-            if result['success']:
-                return {'success': True, 'categories': result['data']}
-            return result
+            response = self.supabase.from_('vod_categories').select('*').eq('connection_id', connection_id).execute()
+            if response.data:
+                return {'success': True, 'categories': response.data}
+            return {'success': True, 'categories': []}
         except Exception as e:
+            logging.error(f"Error fetching VOD categories from Supabase for connection {connection_id}: {e}", exc_info=True)
             return {'success': False, 'error': str(e)}
 
     def get_series_categories(self, connection_id):
+        """Fetches series categories from Supabase."""
         try:
-            result = self._make_xtream_request(connection_id, 'get_series_categories')
-            if result['success']:
-                return {'success': True, 'categories': result['data']}
-            return result
+            response = self.supabase.from_('series_categories').select('*').eq('connection_id', connection_id).execute()
+            if response.data:
+                return {'success': True, 'categories': response.data}
+            return {'success': True, 'categories': []}
         except Exception as e:
+            logging.error(f"Error fetching series categories from Supabase for connection {connection_id}: {e}", exc_info=True)
             return {'success': False, 'error': str(e)}
 
     # --- Stream Methods ---
@@ -240,94 +246,181 @@ class XtreamService:
         except requests.exceptions.RequestException as e:
             return {'success': False, 'error': f'Xtream API authentication failed: {e}'}
 
-    def run_full_sync(self, connection_id):
+    def sync_live_data(self, connection_id):
         """
-        Performs a full data synchronization from the Xtream API to Supabase tables.
-        Deletes old data and inserts new data.
+        Synchronizes live channels and categories from Xtream API to Supabase.
         """
-        logging.warning(f"Starting full sync for connection_id: {connection_id}")
+        logging.warning(f"Starting live data sync for connection_id: {connection_id}")
         try:
-            # Step 1: Clear old data for this connection
-            logging.warning(f"Sync {connection_id}: Deleting old data...")
-            self.supabase.from_('series').delete().eq('connection_id', connection_id).execute()
-            self.supabase.from_('vod_streams').delete().eq('connection_id', connection_id).execute()
             self.supabase.from_('live_streams').delete().eq('connection_id', connection_id).execute()
-            self.supabase.from_('series_categories').delete().eq('connection_id', connection_id).execute()
-            self.supabase.from_('vod_categories').delete().eq('connection_id', connection_id).execute()
             self.supabase.from_('live_categories').delete().eq('connection_id', connection_id).execute()
-            logging.warning(f"Sync {connection_id}: Old data deleted.")
+            logging.warning(f"Sync {connection_id}: Old live data deleted.")
 
-            # Step 2: Fetch new data from Xtream API
-            logging.warning(f"Sync {connection_id}: Fetching new data from Xtream API...")
             live_cats_res = self.get_live_categories(connection_id)
-            vod_cats_res = self.get_vod_categories(connection_id)
-            series_cats_res = self.get_series_categories(connection_id)
             live_streams_res = self.get_live_streams(connection_id)
-            vod_streams_res = self.get_vod_streams(connection_id)
-            series_res = self.get_series(connection_id)
-            logging.warning(f"Sync {connection_id}: New data fetched.")
+            logging.warning(f"Sync {connection_id}: New live data fetched.")
 
-            # Step 3: Insert new data into Supabase
-            logging.warning(f"Sync {connection_id}: Inserting new data into Supabase...")
             if live_cats_res.get('success') and live_cats_res.get('categories'):
-                for item in live_cats_res['categories']: item['connection_id'] = connection_id
-                self.supabase.from_('live_categories').insert(live_cats_res['categories']).execute()
-
-            if vod_cats_res.get('success') and vod_cats_res.get('categories'):
-                for item in vod_cats_res['categories']: item['connection_id'] = connection_id
-                self.supabase.from_('vod_categories').insert(vod_cats_res['categories']).execute()
-
-            if series_cats_res.get('success') and series_cats_res.get('categories'):
-                for item in series_cats_res['categories']: item['connection_id'] = connection_id
-                self.supabase.from_('series_categories').insert(series_cats_res['categories']).execute()
+                categories_to_insert = []
+                for item in live_cats_res['categories']:
+                    categories_to_insert.append({
+                        'connection_id': connection_id,
+                        'category_id': item.get('category_id'),
+                        'category_name': item.get('category_name'),
+                        'parent_id': item.get('parent_id')
+                    })
+                if categories_to_insert:
+                    self.supabase.from_('live_categories').insert(categories_to_insert).execute()
+                    logging.warning(f"Inserted {len(categories_to_insert)} live categories.")
+                else:
+                    logging.warning("No live categories to insert.")
+            else:
+                logging.error(f"Failed to fetch live categories: {live_cats_res.get('error', 'Unknown error')}")
 
             if live_streams_res.get('success') and live_streams_res.get('streams'):
-                streams_to_insert = [{
-                    'connection_id': connection_id,
-                    'stream_id': s.get('stream_id'),
-                    'name': s.get('name'),
-                    'stream_icon': s.get('stream_icon'),
-                    'category_id': s.get('category_id'),
-                    'epg_channel_id': s.get('epg_channel_id'),
-                    'added': s.get('added'),
-                    'is_adult': s.get('is_adult', '0')
-                } for s in live_streams_res['streams']]
-                if streams_to_insert: self.supabase.from_('live_streams').insert(streams_to_insert).execute()
+                streams_to_insert = []
+                for s in live_streams_res['streams']:
+                    streams_to_insert.append({
+                        'connection_id': connection_id,
+                        'stream_id': s.get('stream_id'),
+                        'name': s.get('name'),
+                        'stream_icon': s.get('stream_icon'),
+                        'category_id': s.get('category_id'),
+                        'epg_channel_id': s.get('epg_channel_id'),
+                        'added': s.get('added'),
+                        'is_adult': s.get('is_adult', '0')
+                    })
+                if streams_to_insert:
+                    self.supabase.from_('live_streams').insert(streams_to_insert).execute()
+                    logging.warning(f"Inserted {len(streams_to_insert)} live streams.")
+                else:
+                    logging.warning("No live streams to insert.")
+            else:
+                logging.error(f"Failed to fetch live streams: {live_streams_res.get('error', 'Unknown error')}")
+            
+            logging.warning(f"Live data sync for connection {connection_id} completed.")
+            return {'success': True, 'message': 'Live data sync completed.'}
+        except Exception as e:
+            logging.error(f"Error during live data sync for connection {connection_id}: {e}", exc_info=True)
+            return {'success': False, 'error': str(e)}
+
+    def sync_vod_data(self, connection_id):
+        """
+        Synchronizes VOD (movies) and categories from Xtream API to Supabase.
+        """
+        logging.warning(f"Starting VOD data sync for connection_id: {connection_id}")
+        try:
+            self.supabase.from_('vod_streams').delete().eq('connection_id', connection_id).execute()
+            self.supabase.from_('vod_categories').delete().eq('connection_id', connection_id).execute()
+            logging.warning(f"Sync {connection_id}: Old VOD data deleted.")
+
+            vod_cats_res = self.get_vod_categories(connection_id)
+            vod_streams_res = self.get_vod_streams(connection_id)
+            logging.warning(f"Sync {connection_id}: New VOD data fetched.")
+
+            if vod_cats_res.get('success') and vod_cats_res.get('categories'):
+                categories_to_insert = []
+                for item in vod_cats_res['data']:
+                    categories_to_insert.append({
+                        'connection_id': connection_id,
+                        'category_id': item.get('category_id'),
+                        'category_name': item.get('category_name'),
+                        'parent_id': item.get('parent_id')
+                    })
+                if categories_to_insert:
+                    self.supabase.from_('vod_categories').insert(categories_to_insert).execute()
+                    logging.warning(f"Inserted {len(categories_to_insert)} VOD categories.")
+                else:
+                    logging.warning("No VOD categories to insert.")
+            else:
+                logging.error(f"Failed to fetch VOD categories: {vod_cats_res.get('error', 'Unknown error')}")
 
             if vod_streams_res.get('success') and vod_streams_res.get('streams'):
-                streams_to_insert = [{
-                    'connection_id': connection_id,
-                    'stream_id': s.get('stream_id'),
-                    'name': s.get('name'),
-                    'stream_icon': s.get('stream_icon'),
-                    'category_id': s.get('category_id'),
-                    'rating': s.get('rating'),
-                    'added': s.get('added')
-                } for s in vod_streams_res['streams']]
-                if streams_to_insert: self.supabase.from_('vod_streams').insert(streams_to_insert).execute()
+                streams_to_insert = []
+                for s in vod_streams_res['data']:
+                    streams_to_insert.append({
+                        'connection_id': connection_id,
+                        'stream_id': s.get('stream_id'),
+                        'name': s.get('name'),
+                        'stream_icon': s.get('stream_icon'),
+                        'category_id': s.get('category_id'),
+                        'rating': s.get('rating'),
+                        'added': s.get('added')
+                    })
+                if streams_to_insert:
+                    self.supabase.from_('vod_streams').insert(streams_to_insert).execute()
+                    logging.warning(f"Inserted {len(streams_to_insert)} VOD streams.")
+                else:
+                    logging.warning("No VOD streams to insert.")
+            else:
+                logging.error(f"Failed to fetch VOD streams: {vod_streams_res.get('error', 'Unknown error')}")
+
+            logging.warning(f"VOD data sync for connection {connection_id} completed.")
+            return {'success': True, 'message': 'VOD data sync completed.'}
+        except Exception as e:
+            logging.error(f"Error during VOD data sync for connection {connection_id}: {e}", exc_info=True)
+            return {'success': False, 'error': str(e)}
+
+    def sync_series_data(self, connection_id):
+        """
+        Synchronizes series and categories from Xtream API to Supabase.
+        """
+        logging.warning(f"Starting series data sync for connection_id: {connection_id}")
+        try:
+            self.supabase.from_('series').delete().eq('connection_id', connection_id).execute()
+            self.supabase.from_('series_categories').delete().eq('connection_id', connection_id).execute()
+            logging.warning(f"Sync {connection_id}: Old series data deleted.")
+
+            series_cats_res = self.get_series_categories(connection_id)
+            series_res = self.get_series(connection_id)
+            logging.warning(f"Sync {connection_id}: New series data fetched.")
+
+            if series_cats_res.get('success') and series_cats_res.get('categories'):
+                categories_to_insert = []
+                for item in series_cats_res['data']:
+                    categories_to_insert.append({
+                        'connection_id': connection_id,
+                        'category_id': item.get('category_id'),
+                        'category_name': item.get('category_name'),
+                        'parent_id': item.get('parent_id')
+                    })
+                if categories_to_insert:
+                    self.supabase.from_('series_categories').insert(categories_to_insert).execute()
+                    logging.warning(f"Inserted {len(categories_to_insert)} series categories.")
+                else:
+                    logging.warning("No series categories to insert.")
+            else:
+                logging.error(f"Failed to fetch series categories: {series_cats_res.get('error', 'Unknown error')}")
 
             if series_res.get('success') and series_res.get('streams'):
-                series_to_insert = [{
-                    'connection_id': connection_id,
-                    'series_id': s.get('series_id'),
-                    'name': s.get('name'),
-                    'cover': s.get('cover'),
-                    'plot': s.get('plot'),
-                    'cast': s.get('cast'),
-                    'director': s.get('director'),
-                    'genre': s.get('genre'),
-                    'release_date': s.get('releaseDate'),
-                    'last_modified': s.get('last_modified'),
-                    'rating': s.get('rating'),
-                    'category_id': s.get('category_id')
-                } for s in series_res['streams']]
-                if series_to_insert: self.supabase.from_('series').insert(series_to_insert).execute()
-            
-            logging.warning(f"Sync for connection {connection_id} completed successfully.")
-            return {'success': True, 'message': 'Synchronization completed.'}
+                series_to_insert = []
+                for s in series_res['data']:
+                    series_to_insert.append({
+                        'connection_id': connection_id,
+                        'series_id': s.get('series_id'),
+                        'name': s.get('name'),
+                        'cover': s.get('cover'),
+                        'plot': s.get('plot'),
+                        'cast': s.get('cast'),
+                        'director': s.get('director'),
+                        'genre': s.get('genre'),
+                        'release_date': s.get('releaseDate'),
+                        'last_modified': s.get('last_modified'),
+                        'rating': s.get('rating'),
+                        'category_id': s.get('category_id')
+                    })
+                if series_to_insert:
+                    self.supabase.from_('series').insert(series_to_insert).execute()
+                    logging.warning(f"Inserted {len(series_to_insert)} series.")
+                else:
+                    logging.warning("No series to insert.")
+            else:
+                logging.error(f"Failed to fetch series: {series_res.get('error', 'Unknown error')}")
 
+            logging.warning(f"Series data sync for connection {connection_id} completed.")
+            return {'success': True, 'message': 'Series data sync completed.'}
         except Exception as e:
-            logging.error(f"Error during sync for connection {connection_id}: {e}", exc_info=True)
+            logging.error(f"Error during series data sync for connection {connection_id}: {e}", exc_info=True)
             return {'success': False, 'error': str(e)}
 
     def search_streams(self, connection_id, stream_type, query_text):

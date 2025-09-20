@@ -17,8 +17,7 @@ import {
   Users,
   Wifi,
   Calendar,
-  Loader2,
-  RefreshCw
+  
 } from 'lucide-react'
 
 export default function Dashboard({ 
@@ -31,8 +30,6 @@ export default function Dashboard({
   connectionStatus = 'active' 
 }) {
   const [currentTime, setCurrentTime] = useState(new Date())
-  const [isSyncing, setIsSyncing] = useState(false)
-
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(new Date())
@@ -40,34 +37,6 @@ export default function Dashboard({
 
     return () => clearInterval(timer)
   }, [])
-
-  const handleSync = async () => {
-    if (!connectionData) {
-      alert('Dados de conexão não encontrados.');
-      return;
-    }
-    setIsSyncing(true);
-    try {
-      // CORREÇÃO: Usar a variável de ambiente corretamente e apontar para o endpoint /api/iptv
-      const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
-      const connectionId = connectionData.id || connectionData.connection_id;
-      // CORREÇÃO: Chamar a rota correta /request_sync
-      const response = await fetch(`${API_BASE}/api/iptv/request_sync/${connectionId}`, {
-        method: 'POST',
-      });
-      const data = await response.json();
-      if (data.success) {
-        // Mudar a mensagem de alerta, pois a sincronização agora é simbólica
-        alert(data.message || 'Sincronização solicitada.');
-      } else {
-        alert(`Erro ao solicitar a sincronização: ${data.error}`);
-      }
-    } catch (error) {
-      alert(`Erro de conexão ao tentar sincronizar: ${error.message}`);
-    } finally {
-      setIsSyncing(false);
-    }
-  };
 
   const formatTime = (date) => {
     return date.toLocaleTimeString('pt-BR', {
@@ -357,19 +326,7 @@ export default function Dashboard({
             Buscar Conteúdo
           </Button>
 
-          <Button
-            variant="outline"
-            onClick={handleSync}
-            disabled={isSyncing}
-            className="border-purple-500/50 text-purple-300 hover:bg-purple-500/20"
-          >
-            {isSyncing ? (
-              <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-            ) : (
-              <RefreshCw className="w-4 h-4 mr-2" />
-            )}
-            {isSyncing ? 'Sincronizando...' : 'Sincronizar Dados'}
-          </Button>
+          
           
           <Button
             variant="outline"

@@ -56,15 +56,30 @@ def get_connections():
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
 
-@iptv_bp.route('/request_sync/<int:connection_id>', methods=['POST'])
-def request_sync(connection_id):
-    """Requests a manual data synchronization to run in the background."""
+@iptv_bp.route('/request_sync/<string:content_type>/<int:connection_id>', methods=['POST'])
+def request_sync_granular(content_type, connection_id):
+    """Requests a granular data synchronization to run in the background."""
+    service = get_xtream_service()
+    sync_function = None
+    message = ""
+
+    if content_type == 'live':
+        sync_function = service.sync_live_data
+        message = "Sincronização de Canais ao Vivo iniciada em segundo plano."
+    elif content_type == 'vod':
+        sync_function = service.sync_vod_data
+        message = "Sincronização de Filmes iniciada em segundo plano."
+    elif content_type == 'series':
+        sync_function = service.sync_series_data
+        message = "Sincronização de Séries iniciada em segundo plano."
+    else:
+        return jsonify({'success': False, 'error': 'Tipo de conteúdo inválido para sincronização.'}), 400
+
     try:
-        # Submit the long-running task to the executor
-        executor.submit(get_xtream_service().run_full_sync, connection_id)
-        return jsonify({'success': True, 'message': 'A sincronização foi iniciada em segundo plano. Pode levar vários minutos para ser concluída.'}), 202
+        executor.submit(sync_function, connection_id)
+        return jsonify({'success': True, 'message': f"{message} Pode levar alguns minutos para ser concluída."}), 202
     except Exception as e:
-        logging.error(f"Failed to submit sync job for connection {connection_id}: {e}")
+        logging.error(f"Failed to submit sync job for {content_type} for connection {connection_id}: {e}", exc_info=True)
         return jsonify({'success': False, 'error': str(e)}), 500
 
 @iptv_bp.route('/categories/<int:connection_id>/<category_type>', methods=['GET'])
@@ -231,7 +246,7 @@ def get_dashboard_data(connection_id):
 
         # 2. Calcula estatísticas contando as linhas nas tabelas do Supabase
         # O método `count='exact'` é uma forma eficiente de obter a contagem total.
-        live_count_req = supabase.from_('live_streams').select('id', count='exact').execute() # DEBUG: Removido filtro de connection_id
+        live_count_req = supabase.from_('live_streams').select('id', count='exact').eq('connection_id', connection_id).execute()
         vod_count_req = supabase.from_('vod_streams').select('id', count='exact').eq('connection_id', connection_id).execute()
         series_count_req = supabase.from_('series').select('id', count='exact').eq('connection_id', connection_id).execute()
         live_cat_count_req = supabase.from_('live_categories').select('id', count='exact').eq('connection_id', connection_id).execute()

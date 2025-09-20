@@ -157,6 +157,7 @@ MANUS_backup_pre-refatoracao.tar.gz
 /iptv-backend/instance/
 /iptv-backend/__pycache__/
 /iptv-backend/.env
+/iptv-backend/sync_local.py
 __pycache__/
 *.pyc
 
