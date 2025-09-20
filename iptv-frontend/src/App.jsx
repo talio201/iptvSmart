@@ -154,7 +154,7 @@ function App() {
             </header>
             <div className="flex-1 flex items-center justify-center">
               <PlayerScreen
-                serverUrl={connectionData.url} // Assuming property name is 'url'
+                serverUrl={connectionData.server_url} // Assuming property name is 'url'
                 username={connectionData.username}
                 password={connectionData.password}
                 streamId={selectedStream.si}
