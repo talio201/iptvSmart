@@ -176,7 +176,7 @@ def proxy():
             return jsonify({'success': False, 'error': 'URL é obrigatória'}), 400
         
         headers = {
-            'User-Agent': 'VLC/3.0.0',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
             'Referer': url
         }
         
@@ -207,10 +207,16 @@ def proxy():
         else:
             return Response(stream_with_context(req.iter_content(chunk_size=1024)), content_type=content_type)
 
+    except requests.exceptions.HTTPError as e:
+        return jsonify({
+            'success': False, 
+            'error': f'HTTP Error from target: {e.response.status_code} {e.response.reason}'
+        }), 500
     except requests.exceptions.Timeout:
         return jsonify({'success': False, 'error': 'Timeout ao acessar a URL do stream'}), 504
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
+
 
 
 @iptv_bp.route('/series_info/<int:connection_id>/<int:series_id>', methods=['GET'])
