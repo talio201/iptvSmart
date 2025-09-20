@@ -41,11 +41,19 @@ const GridItem = ({ columnIndex, rowIndex, style, data }) => {
 
   if (!stream) return null;
 
+  const handleClick = () => {
+    if (typeof onPlayStream === 'function') {
+      onPlayStream(stream);
+    } else {
+      console.error('onPlayStream prop is not a function. Received:', onPlayStream);
+    }
+  };
+
   return (
     <div style={style} className="p-2">
       <Card
         className="bg-gray-800/50 border-purple-500/30 h-full flex flex-col justify-between hover:bg-purple-500/20 cursor-pointer transition-all"
-        onClick={() => onPlayStream(stream)}
+        onClick={handleClick}
       >
         <CardContent className="p-0 flex-grow flex items-center justify-center">
           {stream.ic ? (
@@ -263,11 +271,19 @@ export default function CategoryBrowser({
 
     if (!stream) return null // Item não encontrado ou ainda carregando
 
+    const handleClick = () => {
+      if (typeof onPlayStream === 'function') {
+        onPlayStream(stream);
+      } else {
+        console.error('onPlayStream prop is not a function. Received:', onPlayStream);
+      }
+    };
+
     return (
       <div
         style={style}
         className="p-4 flex items-center justify-between border-b border-white/10 hover:bg-purple-500/10 cursor-pointer transition-colors"
-        onClick={() => onPlayStream(stream)}
+        onClick={handleClick}
       >
         <span className="truncate">{stream.n}</span>
         <Play className="w-5 h-5 text-purple-300/70" />
