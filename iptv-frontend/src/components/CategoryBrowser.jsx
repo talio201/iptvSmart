@@ -224,6 +224,7 @@ export default function CategoryBrowser({
   // Renderização de um item da lista virtualizada
   const StreamItem = useCallback(({ index, style }) => {
     const stream = filteredStreams[index]
+    console.log('CategoryBrowser: StreamItem rendering stream:', stream); // Added for debugging
 
     // Carrega mais itens quando o usuário se aproxima do final da lista
     if (hasMore && !isFetchingStreams && index >= filteredStreams.length - 10) {
@@ -233,160 +234,8 @@ export default function CategoryBrowser({
     if (!stream) return null // Item não encontrado ou ainda carregando
 
     return (
-      <div style={style}>
-        {viewMode === 'grid' ? (
-          <Card
-            key={stream.i} // Usando a chave otimizada
-            className="bg-black/40 border-purple-500/30 backdrop-blur-sm hover:bg-black/60 transition-all duration-300 cursor-pointer group"
-            onClick={() => {
-              console.log('Stream object passed to onPlayStream:', JSON.stringify(stream, null, 2));
-              onPlayStream(stream)
-            }}
-          >
-            <CardContent className="p-3 space-y-3">
-              {/* Thumbnail */}
-              <div className="relative aspect-video bg-gradient-to-br from-purple-600/20 to-blue-600/20 rounded-lg overflow-hidden">
-                {stream.ic ? ( // Usando a chave otimizada
-                  <img
-                    src={stream.ic}
-                    alt={stream.n} // Usando a chave otimizada
-                    className="w-full h-full object-cover"
-                    loading="lazy" // Adicionado lazy loading
-                    onError={(e) => {
-                      e.target.style.display = 'none'
-                    }}
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center">
-                    <Play className="w-8 h-8 text-purple-400" />
-                  </div>
-                )}
-                
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <Play className="w-8 h-8 text-white" />
-                </div>
-
-                {/* Favorite Button */}
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="absolute top-2 right-2 w-8 h-8 p-0 bg-black/50 hover:bg-black/70"
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    onToggleFavorite(stream.si) // Usando a chave otimizada
-                  }}
-                >
-                  <Star 
-                    className={`w-4 h-4 ${
-                      isFavorite(stream.si) 
-                        ? 'text-yellow-400 fill-yellow-400' 
-                        : 'text-white'
-                    }`} 
-                  />
-                </Button>
-              </div>
-
-              {/* Info */}
-              <div className="space-y-1">
-                <h4 className="text-sm font-medium text-white truncate">
-                  {stream.n} // Usando a chave otimizada
-                </h4>
-                <div className="flex items-center justify-between">
-                  <Badge 
-                    variant="secondary" 
-                    className="text-xs bg-purple-500/20 text-purple-300"
-                  >
-                    {contentType === 'live' ? 'AO VIVO' : 
-                     contentType === 'vod' ? 'FILME' : 'SÉRIE'}
-                  </Badge>
-                  {stream.a && ( // Usando a chave otimizada
-                    <span className="text-xs text-gray-400">
-                      <Clock className="w-3 h-3 inline mr-1" />
-                      {stream.a && !isNaN(stream.a) ? new Date(stream.a * 1000).toLocaleDateString('pt-BR') : stream.a || ''}
-                    </span>
-                  )}
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        ) : (
-          <Card
-            key={stream.i} // Usando a chave otimizada
-            className="bg-black/40 border-purple-500/30 backdrop-blur-sm hover:bg-black/60 transition-all duration-300 cursor-pointer"
-            onClick={() => {
-              console.log('Stream object passed to onPlayStream:', JSON.stringify(stream, null, 2));
-              onPlayStream(stream)
-            }}
-          >
-            <CardContent className="p-4">
-              <div className="flex items-center space-x-4">
-                {/* Thumbnail */}
-                <div className="w-16 h-12 bg-gradient-to-br from-purple-600/20 to-blue-600/20 rounded overflow-hidden flex-shrink-0">
-                  {stream.ic ? ( // Usando a chave otimizada
-                    <img
-                      src={stream.ic}
-                      alt={stream.n} // Usando a chave otimizada
-                      className="w-full h-full object-cover"
-                      loading="lazy" // Adicionado lazy loading
-                      onError={(e) => {
-                        e.target.style.display = 'none'
-                      }}
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center">
-                      <Play className="w-4 h-4 text-purple-400" />
-                    </div>
-                  )}
-                </div>
-
-                {/* Info */}
-                <div className="flex-1 min-w-0">
-                  <h4 className="text-sm font-medium text-white truncate">
-                    {stream.n} // Usando a chave otimizada
-                  </h4>
-                  <div className="flex items-center space-x-2 mt-1">
-                    <Badge 
-                      variant="secondary" 
-                      className="text-xs bg-purple-500/20 text-purple-300"
-                    >
-                      {contentType === 'live' ? 'AO VIVO' : 
-                       contentType === 'vod' ? 'FILME' : 'SÉRIE'}
-                    </Badge>
-                    {stream.a && ( // Usando a chave otimizada
-                      <span className="text-xs text-gray-400">
-                        <Clock className="w-3 h-3 inline mr-1" />
-                        {stream.a && !isNaN(stream.a) ? new Date(stream.a * 1000).toLocaleDateString('pt-BR') : stream.a || ''}
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                {/* Actions */}
-                <div className="flex items-center space-x-2">
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      onToggleFavorite(stream.si) // Usando a chave otimizada
-                    }}
-                    className="w-8 h-8 p-0"
-                  >
-                    <Star 
-                      className={`w-4 h-4 ${
-                        isFavorite(stream.si) 
-                          ? 'text-yellow-400 fill-yellow-400' 
-                          : 'text-gray-400'
-                      }`} 
-                    />
-                  </Button>
-                  <Play className="w-5 h-5 text-purple-400" />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        )}
+      <div style={style} className="p-2 border-b border-gray-700 text-white">
+        {stream.n} (ID: {stream.si})
       </div>
     )
   }, [filteredStreams, viewMode, isFavorite, onPlayStream, onToggleFavorite, hasMore, isFetchingStreams, fetchAndSetStreams, selectedCategory, currentPage, contentType])
@@ -511,6 +360,7 @@ export default function CategoryBrowser({
           </div>
         ) : filteredStreams.length > 0 ? (
           <div className="space-y-4 flex-1 flex flex-col">
+            {console.log('CategoryBrowser: filteredStreams length:', filteredStreams.length, 'filteredStreams:', filteredStreams)} {/* Added for debugging */}
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-semibold text-white">
                 {selectedCategory ? selectedCategory.category_name : 'Todo o Conteúdo'}
@@ -522,7 +372,9 @@ export default function CategoryBrowser({
 
             <div className="flex-1">
               <AutoSizer>
-                {({ height, width }) => (
+                {({ height, width }) => {
+                  console.log('AutoSizer dimensions: ', { height, width }); // Added for debugging
+                  return (
                   <ListVirtualizer
                     ref={listRef}
                     height={height}
@@ -533,7 +385,7 @@ export default function CategoryBrowser({
                   >
                     {StreamItem}
                   </ListVirtualizer>
-                )}
+                )}}
               </AutoSizer>
             </div>
 
