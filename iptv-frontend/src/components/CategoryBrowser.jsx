@@ -234,7 +234,7 @@ export default function CategoryBrowser({
     if (!stream) return null // Item não encontrado ou ainda carregando
 
     return (
-      <div style={style} className="p-2 border-b border-gray-700 text-white">
+      <div style={style} className="p-2 border border-red-500 text-white">
         {stream.n} (ID: {stream.si})
       </div>
     )
