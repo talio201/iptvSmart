@@ -67,15 +67,13 @@ function buildXtreamUrl({
   let path = "";
   switch (contentType) {
     case "live":
-      // common Xtream live patterns
-      // m3u8: /live/u/p/id.m3u8, ts: /live/u/p/id.ts
-      path = `/live/${u}/${p}/${streamId}.${container === "ts" ? "ts" : container}`;
+      path = `/live/${u}/${p}/${streamId}.${container}`;
       break;
     case "movie":
-      path = `/movie/${u}/${p}/${streamId}.${container === "ts" ? "ts" : container}`;
+      path = `/movie/${u}/${p}/${streamId}.${container}`;
       break;
     case "series":
-      path = `/series/${u}/${p}/${streamId}.${container === "ts" ? "ts" : container}`;
+      path = `/series/${u}/${p}/${streamId}.${container}`;
       break;
     default:
       path = `/live/${u}/${p}/${streamId}.${container}`;
@@ -141,143 +139,30 @@ export default function XtreamPlayer(props: XtreamPlayerProps) {
     }));
   }, [preferredContainers, serverUrl, username, password, streamId, contentType]);
 
-  // Attempt sources in order until one works.
   useEffect(() => {
     let cancelled = false;
 
-    async function setup() {
-      setErrorMsg(null);
-      setLevels([]);
-      setCurrentLevel(-1);
-      setActiveUrl("");
-      setUsingNativeHls(false);
-
-      const video = videoRef.current!;
-      if (!video) return;
-
-      // Cleanup any previous instance
-      if (hlsRef.current) {
-        try { hlsRef.current.destroy(); } catch {}
-        hlsRef.current = null;
-      }
-
-      // If Safari/iOS supports native HLS
-      const nativeHls = video.canPlayType('application/vnd.apple.mpegurl');
-
-      for (const cand of candidateUrls) {
-        if (cancelled) return;
-        try {
-          if (cand.container === "m3u8" && nativeHls) {
-            setUsingNativeHls(true);
-            video.src = cand.url;
-            setActiveUrl(cand.url);
-            await video.play().catch(() => {});
-            attachBasicListeners();
-            return;
-          }
-
-          if (cand.container === "m3u8") {
-            const Hls = (await import("hls.js")).default;
-            if (Hls.isSupported()) {
-              const hls = new Hls({
-                // Low-latency & speed-focused defaults; override via hlsConfig
-                lowLatencyMode: true,
-                enableWorker: true,
-                backBufferLength: 30,
-                maxBufferLength: 10,
-                maxBufferSize: 60 * 1000 * 1000, // 60MB
-                liveSyncDuration: 2,
-                liveMaxLatencyDuration: 6,
-                fragLoadingTimeOut: 15000,
-                manifestLoadingTimeOut: 15000,
-                ...hlsConfig,
-              });
-              hlsRef.current = hls;
-              hls.attachMedia(video);
-              hls.on((Hls as any).Events.MEDIA_ATTACHED, () => {
-                hls.loadSource(cand.url);
-              });
-
-              hls.on((Hls as any).Events.MANIFEST_PARSED, (_e: any, data: any) => {
-                const lvls = (hls.levels || []).map((lvl: any, index: number) => ({
-                  index,
-                  height: lvl.height,
-                  bitrate: lvl.bitrate,
-                  name: lvl.name,
-                }));
-                setLevels(lvls);
-                setCurrentLevel(hls.currentLevel ?? -1);
-                setActiveUrl(cand.url);
-                if (autoPlay) video.play().catch(() => {});
-              });
-
-              hls.on((Hls as any).Events.LEVEL_SWITCHED, (_e: any, data: any) => {
-                setCurrentLevel(data.level ?? -1);
-              });
-
-              // Robust error recovery
-              hls.on((Hls as any).Events.ERROR, (_e: any, data: any) => {
-                const fatal = data?.fatal;
-                if (fatal) {
-                  switch (data.type) {
-                    case (Hls as any).ErrorTypes.NETWORK_ERROR:
-                      hls.startLoad();
-                      break;
-                    case (Hls as any).ErrorTypes.MEDIA_ERROR:
-                      hls.recoverMediaError();
-                      break;
-                    default:
-                      try { hls.destroy(); } catch {}
-                  }
-                }
-              });
-
-              attachBasicListeners();
-              return; // We stop after first successful setup attempt
-            }
-          }
-
-          // Non-HLS fallback
-          const canPlay = video.canPlayType(
-            cand.container === "mp4" ? "video/mp4" : "video/mp2t"
-          );
-          if (canPlay) {
-            video.src = cand.url;
-            setActiveUrl(cand.url);
-            attachBasicListeners();
-            if (autoPlay) await video.play().catch(() => {});
-            return;
-          }
-        } catch (err: any) {
-          // Try next candidate
-          setErrorMsg(err?.message || String(err));
-        }
-      }
-
-      // If reached here, none worked
-      setErrorMsg("Nenhum formato suportado foi reproduzido. Verifique o servidor/credenciais/ID.");
-    }
-
     function attachBasicListeners() {
-      const v = videoRef.current!;
-      if (!v) return;
+      const v = videoRef.current;
+      if (!v) return () => {};
       const onPlay = () => setIsPlaying(true);
       const onPause = () => setIsPlaying(false);
       const onTime = () => {
+        if (!v) return;
         setCurrentTime(v.currentTime || 0);
-        // Compute buffered end (last range end)
         const br = v.buffered;
-        if (br && br.length) {
-          const end = br.end(br.length - 1);
-          setBufferedEnd(end);
-        }
+        if (br && br.length) setBufferedEnd(br.end(br.length - 1));
       };
-      const onLoaded = () => setDuration(v.duration);
+      const onLoaded = () => v && setDuration(v.duration);
       const onVolume = () => {
+        if (!v) return;
         setVolume(v.volume);
         setIsMuted(v.muted);
       };
-      const onError = () => setErrorMsg("Falha na reprodução. Tentando recuperar...");
+      const onError = (e: any) => {
+        console.error("Video element error:", e);
+        setErrorMsg("Ocorreu um erro no player de vídeo.");
+      };
 
       v.addEventListener("play", onPlay);
       v.addEventListener("pause", onPause);
@@ -286,8 +171,7 @@ export default function XtreamPlayer(props: XtreamPlayerProps) {
       v.addEventListener("volumechange", onVolume);
       v.addEventListener("error", onError);
 
-      // Cleanup for re-inits/unmount
-      const cleanup = () => {
+      return () => {
         v.removeEventListener("play", onPlay);
         v.removeEventListener("pause", onPause);
         v.removeEventListener("timeupdate", onTime);
@@ -295,22 +179,110 @@ export default function XtreamPlayer(props: XtreamPlayerProps) {
         v.removeEventListener("volumechange", onVolume);
         v.removeEventListener("error", onError);
       };
-      // Store on element so we can call between attempts
-      (v as any)._xtreamCleanup = cleanup;
     }
 
+    async function setup() {
+      if (cancelled) return;
+      setErrorMsg(null);
+      setLevels([]);
+      setCurrentLevel(-1);
+      setActiveUrl("");
+      setUsingNativeHls(false);
+
+      const video = videoRef.current;
+      if (!video) return;
+
+      if (hlsRef.current) {
+        hlsRef.current.destroy();
+        hlsRef.current = null;
+      }
+      
+      const m3u8Src = candidateUrls.find(c => c.container === 'm3u8')?.url;
+      const tsSrc = candidateUrls.find(c => c.container === 'ts')?.url;
+      const mp4Src = candidateUrls.find(c => c.container === 'mp4')?.url;
+
+      const Hls = (await import("hls.js")).default;
+      const nativeHls = video.canPlayType('application/vnd.apple.mpegurl');
+      let sourceSet = false;
+
+      try {
+        if (m3u8Src && (nativeHls || Hls.isSupported())) {
+          sourceSet = true;
+          setActiveUrl(m3u8Src);
+          if (nativeHls) {
+            setUsingNativeHls(true);
+            video.src = m3u8Src;
+          } else {
+            const hls = new Hls({
+              lowLatencyMode: true,
+              enableWorker: true,
+              backBufferLength: 90,
+              ...hlsConfig,
+            });
+            hlsRef.current = hls;
+            hls.loadSource(m3u8Src);
+            hls.attachMedia(video);
+            hls.on(Hls.Events.MANIFEST_PARSED, (_e, data) => {
+              const lvls = (hls.levels || []).map((lvl, index) => ({
+                index, height: lvl.height, bitrate: lvl.bitrate, name: lvl.name,
+              }));
+              setLevels(lvls);
+              setCurrentLevel(hls.currentLevel ?? -1);
+            });
+            hls.on(Hls.Events.LEVEL_SWITCHED, (_e, data) => setCurrentLevel(data.level ?? -1));
+            hls.on(Hls.Events.ERROR, (event, data) => {
+              if (data.fatal) {
+                switch (data.type) {
+                  case Hls.ErrorTypes.NETWORK_ERROR:
+                    hls.startLoad();
+                    break;
+                  case Hls.ErrorTypes.MEDIA_ERROR:
+                    hls.recoverMediaError();
+                    break;
+                  default:
+                    hls.destroy();
+                    break;
+                }
+              }
+            });
+          }
+        } else if (mp4Src && video.canPlayType('video/mp4')) {
+          sourceSet = true;
+          video.src = mp4Src;
+          setActiveUrl(mp4Src);
+        } else if (tsSrc && video.canPlayType('video/mp2t')) {
+          sourceSet = true;
+          video.src = tsSrc;
+          setActiveUrl(tsSrc);
+        }
+
+        if (sourceSet) {
+          if (autoPlay) {
+            await video.play();
+          }
+        } else {
+          setErrorMsg("Nenhum formato de vídeo suportado encontrado.");
+        }
+      } catch (error: any) {
+        console.error("Error setting up player:", error);
+        if (error.name !== 'AbortError') {
+          setErrorMsg(`Falha ao iniciar a reprodução: ${error.message}`);
+        }
+      }
+    }
+
+    const cleanupListeners = attachBasicListeners();
     setup();
 
     return () => {
       cancelled = true;
-      const v = videoRef.current as any;
-      if (v?._xtreamCleanup) v._xtreamCleanup();
+      cleanupListeners();
       if (hlsRef.current) {
-        try { hlsRef.current.destroy(); } catch {}
+        hlsRef.current.destroy();
         hlsRef.current = null;
       }
     };
-  }, [candidateUrls, autoPlay, hlsConfig]);
+  }, [candidateUrls, autoPlay, hlsConfig, contentType]);
 
   // Keyboard shortcuts
   useEffect(() => {
