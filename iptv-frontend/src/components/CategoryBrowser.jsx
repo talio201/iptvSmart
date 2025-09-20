@@ -24,7 +24,7 @@ const fetchStreamsPage = async (connectionId, contentType, categoryId, page) => 
   try {
     const response = await fetch(`/api/iptv/streams/${connectionId}/${contentType}?category_id=${categoryId}&page=${page}`)
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status_code}`)
+      throw new Error(`HTTP error! status: ${response.status}`)
     }
     const data = await response.json()
     return data
