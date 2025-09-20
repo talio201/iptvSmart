@@ -16,7 +16,7 @@ import {
   ChevronRight,
   Filter
 } from 'lucide-react'
-import { FixedSizeList as ListVirtualizer } from 'react-window'
+import { FixedSizeList as ListVirtualizer, FixedSizeGrid as GridVirtualizer } from 'react-window'
 import AutoSizer from 'react-virtualized-auto-sizer'
 
 // Helper para buscar dados do backend
@@ -33,6 +33,37 @@ const fetchStreamsPage = async (connectionId, contentType, categoryId, page) => 
     return { success: false, streams: [], pagination: { has_more: false } }
   }
 }
+
+const GridItem = ({ columnIndex, rowIndex, style, data }) => {
+  const { streams, columnCount, onPlayStream } = data;
+  const index = rowIndex * columnCount + columnIndex;
+  const stream = streams[index];
+
+  if (!stream) return null;
+
+  return (
+    <div style={style} className="p-2">
+      <Card
+        className="bg-gray-800/50 border-purple-500/30 h-full flex flex-col justify-between hover:bg-purple-500/20 cursor-pointer transition-all"
+        onClick={() => onPlayStream(stream)}
+      >
+        <CardContent className="p-0 flex-grow flex items-center justify-center">
+          {stream.ic ? (
+            <img src={stream.ic} alt={stream.n} className="object-contain h-32 w-full p-2" />
+          ) : (
+            <div className="h-32 w-full flex items-center justify-center text-gray-500">
+              <Grid3X3 className="w-10 h-10" />
+            </div>
+          )}
+        </CardContent>
+        <div className="p-2 text-center bg-black/30">
+          <p className="text-xs text-white truncate">{stream.n}</p>
+        </div>
+      </Card>
+    </div>
+  );
+};
+
 
 export default function CategoryBrowser({
   connectionData,
@@ -224,8 +255,7 @@ export default function CategoryBrowser({
   // Renderização de um item da lista virtualizada
   const StreamItem = useCallback(({ index, style }) => {
     const stream = filteredStreams[index]
-    console.log('CategoryBrowser: StreamItem rendering stream:', stream); // Added for debugging
-
+    
     // Carrega mais itens quando o usuário se aproxima do final da lista
     if (hasMore && !isFetchingStreams && index >= filteredStreams.length - 10) {
       fetchAndSetStreams(selectedCategory.category_id, currentPage + 1)
@@ -234,11 +264,16 @@ export default function CategoryBrowser({
     if (!stream) return null // Item não encontrado ou ainda carregando
 
     return (
-      <div style={style} className="p-2 border border-red-500 text-white">
-        {stream.n} (ID: {stream.si})
+      <div
+        style={style}
+        className="p-4 flex items-center justify-between border-b border-white/10 hover:bg-purple-500/10 cursor-pointer transition-colors"
+        onClick={() => onPlayStream(stream)}
+      >
+        <span className="truncate">{stream.n}</span>
+        <Play className="w-5 h-5 text-purple-300/70" />
       </div>
     )
-  }, [filteredStreams, viewMode, isFavorite, onPlayStream, onToggleFavorite, hasMore, isFetchingStreams, fetchAndSetStreams, selectedCategory, currentPage, contentType])
+  }, [filteredStreams, isFavorite, onPlayStream, onToggleFavorite, hasMore, isFetchingStreams, fetchAndSetStreams, selectedCategory, currentPage, contentType])
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white flex flex-col">
@@ -360,7 +395,6 @@ export default function CategoryBrowser({
           </div>
         ) : filteredStreams.length > 0 ? (
           <div className="space-y-4 flex-1 flex flex-col">
-            {console.log('CategoryBrowser: filteredStreams length:', filteredStreams.length, 'filteredStreams:', filteredStreams)} {/* Added for debugging */}
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-semibold text-white">
                 {selectedCategory ? selectedCategory.category_name : 'Todo o Conteúdo'}
@@ -370,22 +404,45 @@ export default function CategoryBrowser({
               </h3>
             </div>
 
-            <div className="flex-1 min-h-0"> {/* This div wraps AutoSizer */}
+            <div className="flex-1 min-h-0">
               <AutoSizer>
                 {({ height, width }) => {
-                  console.log('AutoSizer dimensions: ', { height, width }); // Added for debugging
+                  if (viewMode === 'grid') {
+                    const itemWidth = 180;
+                    const columnCount = Math.max(1, Math.floor(width / itemWidth));
+                    const rowCount = Math.ceil(filteredStreams.length / columnCount);
+                    const itemHeight = 200;
+
+                    return (
+                      <GridVirtualizer
+                        height={height}
+                        width={width}
+                        columnCount={columnCount}
+                        rowCount={rowCount}
+                        columnWidth={itemWidth}
+                        rowHeight={itemHeight}
+                        itemData={{ streams: filteredStreams, columnCount, onPlayStream }}
+                        overscanRowCount={2}
+                      >
+                        {GridItem}
+                      </GridVirtualizer>
+                    );
+                  }
+
+                  // List view
                   return (
-                  <ListVirtualizer
-                    ref={listRef}
-                    height={height}
-                    itemCount={filteredStreams.length}
-                    itemSize={viewMode === 'grid' ? 250 : 100} // Altura estimada do item
-                    width={width}
-                    overscanRowCount={5} // Renderiza alguns itens extras acima e abaixo da viewport
-                  >
-                    {StreamItem}
-                  </ListVirtualizer>
-                )}}
+                    <ListVirtualizer
+                      ref={listRef}
+                      height={height}
+                      itemCount={filteredStreams.length}
+                      itemSize={64}
+                      width={width}
+                      overscanRowCount={5}
+                    >
+                      {StreamItem}
+                    </ListVirtualizer>
+                  );
+                }}
               </AutoSizer>
             </div>
 
