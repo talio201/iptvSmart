@@ -149,7 +149,16 @@ export default function CategoryBrowser({
       const data = await fetchStreamsPage(connectionData.id, contentType, categoryId, pageNum)
       if (data.success) {
         setAllStreams(prevStreams => {
-          const newStreams = reset ? data.streams : [...prevStreams, ...data.streams];
+          const transformedStreams = data.streams.map(s => ({
+            i: s.id, // Supabase ID
+            si: s.stream_id, // Stream ID
+            n: s.name, // Name
+            ic: s.stream_icon, // Icon
+            a: s.added, // Added date
+            // Add other properties as needed for display or future use
+            ...s // Keep all other properties
+          }));
+          const newStreams = reset ? transformedStreams : [...prevStreams, ...transformedStreams];
           console.log(`CategoryBrowser: setAllStreams - new total streams: ${newStreams.length}`);
           return newStreams;
         })
