@@ -73,6 +73,7 @@ export default function CategoryBrowser({
         const API_BASE = import.meta.env.VITE_API_BASE_URL || ''; // Get API base from env
         const response = await fetch(`${API_BASE}/api/iptv/categories/${connectionData.id}/${contentType}`);
         const data = await response.json();
+        console.log('CategoryBrowser: Raw categories data from backend:', data); // Added for debugging
         if (data.success) {
           setCategories(data.categories);
           if (data.categories.length > 0 && !selectedCategory) {
