@@ -78,7 +78,8 @@ function buildXtreamUrl({
     default:
       path = `/live/${u}/${p}/${streamId}.${container}`;
   }
-  return `${base}${path}`;
+  const xtreamUrl = `${base}${path}`;
+  return `/api/iptv/proxy?url=${encodeURIComponent(xtreamUrl)}`;
 }
 
 function formatTime(secs: number) {
