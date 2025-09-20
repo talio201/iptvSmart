@@ -20,9 +20,9 @@ import { FixedSizeList as ListVirtualizer, FixedSizeGrid as GridVirtualizer } fr
 import AutoSizer from 'react-virtualized-auto-sizer'
 
 // Helper para buscar dados do backend
-const fetchStreamsPage = async (connectionId, contentType, categoryId, page) => {
+const fetchStreamsPage = async (connectionId, contentType, categoryId, page, limit = 50) => {
   try {
-    const response = await fetch(`/api/iptv/streams/${connectionId}/${contentType}?category_id=${categoryId}&page=${page}`)
+    const response = await fetch(`/api/iptv/streams/${connectionId}/${contentType}?category_id=${categoryId}&page=${page}&limit=${limit}`)
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
@@ -185,7 +185,7 @@ export default function CategoryBrowser({
 
     setIsFetchingStreams(true)
     try {
-      const data = await fetchStreamsPage(connectionData.id, contentType, categoryId, pageNum)
+      const data = await fetchStreamsPage(connectionData.id, contentType, categoryId, pageNum, 500)
       if (data.success) {
         setAllStreams(prevStreams => {
           const transformedStreams = data.streams.map(s => ({
