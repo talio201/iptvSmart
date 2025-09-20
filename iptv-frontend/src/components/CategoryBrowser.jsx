@@ -78,7 +78,6 @@ export default function CategoryBrowser({
           setCategories(data.categories);
           if (data.categories.length > 0 && !selectedCategory) {
             setSelectedCategory(data.categories[0]);
-            onSelectCategory(data.categories[0].category_id); // Notifica o componente pai
           }
         } else {
           console.error("Failed to fetch categories:", data.error);
@@ -179,7 +178,6 @@ export default function CategoryBrowser({
     console.log('CategoryBrowser: Category selected:', category);
     setSearchTerm('') // Clear search when category changes
     setSelectedCategory(category)
-    onSelectCategory(category.category_id) // Notifica o componente pai
   }
 
   const scrollCategories = (direction) => {
