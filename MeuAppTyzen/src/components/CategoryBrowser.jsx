@@ -22,17 +22,18 @@ import AutoSizer from 'react-virtualized-auto-sizer'
 // Helper para buscar dados do backend
 const fetchStreamsPage = async (connectionId, contentType, categoryId, page, limit = 50) => {
   try {
-    const response = await fetch(`/api/iptv/streams/${connectionId}/${contentType}?category_id=${categoryId}&page=${page}&limit=${limit}`)
+    const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
+    const response = await fetch(`${API_BASE}/api/iptv/streams/${connectionId}/${contentType}?category_id=${categoryId}&page=${page}&limit=${limit}`);
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`)
+      throw new Error(`HTTP error status: ${response.status}`);
     }
-    const data = await response.json()
-    return data
+    const data = await response.json();
+    return data;
   } catch (error) {
-    console.error("Error fetching streams page:", error)
-    return { success: false, streams: [], pagination: { has_more: false } }
+    console.error("Error fetching streams page:", error);
+    return { success: false, streams: [], pagination: { has_more: false } };
   }
-}
+};
 
 const GridItem = ({ columnIndex, rowIndex, style, data }) => {
   const { streams, columnCount, onPlayStream } = data;

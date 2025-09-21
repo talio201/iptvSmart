@@ -452,8 +452,8 @@ class XtreamService:
         # Placeholder for clearing local data
         return {'success': False, 'error': 'Clear local data not implemented.'}
 
-    def get_stream_url(self, connection_id, stream_id, stream_type):
-        """Builds the final, playable stream URL."""
+    def get_stream_url(self, connection_id, stream_id, stream_type, container=None):
+        """Builds the final, playable stream URL with the specified container."""
         try:
             conn_details = self._get_xtream_connection_details(connection_id)
             if not conn_details:
@@ -466,9 +466,17 @@ class XtreamService:
             # The stream_type should be 'movie' for VOD content as per Xtream standards.
             type_for_url = 'movie' if stream_type == 'vod' else stream_type
 
-            # Format: http://<server_url>/<type>/<username>/<password>/<stream_id>
-            # The player component will add the appropriate extension (e.g., .m3u8)
-            stream_url = f"{server_url}/{type_for_url}/{username}/{password}/{stream_id}"
+            # Determine the container if not provided. Prioritize m3u8 for live.
+            # This fallback logic is primarily for cases where the frontend doesn't specify.
+            # The frontend's preferredContainers logic is more robust.
+            if not container:
+                if type_for_url == 'live':
+                    container = 'm3u8'
+                else:
+                    container = 'ts' # Default for VOD/series if not specified
+
+            # Format: http://<server_url>/<type>/<username>/<password>/<stream_id>.<container>
+            stream_url = f"{server_url}/{type_for_url}/{username}/{password}/{stream_id}.{container}"
 
             return {'success': True, 'url': stream_url}
         except Exception as e:

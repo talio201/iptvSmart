@@ -46,7 +46,11 @@ function App() {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch(`${API_BASE}/api/user/login`, {
+      const handleLogin = async (credentials) => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const response = await fetch('https://flask-iptv.vercel.app/api/user/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(credentials),
@@ -55,13 +59,13 @@ function App() {
       if (data.success) {
         setIsAuthenticated(true);
         setCurrentUser(data.user);
-        const connectionsResponse = await fetch(`${API_BASE}/api/iptv/connections`);
+        const connectionsResponse = await fetch('https://flask-iptv.vercel.app/api/iptv/connections');
         const connectionsData = await connectionsResponse.json();
         if (connectionsData.success && connectionsData.connections.length > 0) {
           const connection = connectionsData.connections[0];
           setConnectionData(connection);
 
-          const dashboardResponse = await fetch(`${API_BASE}/api/iptv/dashboard/${connection.id}`);
+          const dashboardResponse = await fetch(`https://flask-iptv.vercel.app/api/iptv/dashboard/${connection.id}`);
           const dashboardData = await dashboardResponse.json();
 
           if (dashboardData.success) {

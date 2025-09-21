@@ -20,6 +20,8 @@ function App() {
   const [error, setError] = useState(null);
   const [selectedStream, setSelectedStream] = useState(null);
 
+  const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
+
   const currentScreen = screenStack[screenStack.length - 1];
   const currentContentType = screenStack.find(s => ['live', 'movies', 'series'].includes(s)) || 'live';
 
@@ -36,8 +38,6 @@ function App() {
     handleNavigate('player');
   };
 
-  const API_BASE = 'https://iptvsmart.vercel.app';
-
   useEffect(() => {
     // This effect can be used to handle browser back button in the future if needed
   }, []);
@@ -46,7 +46,7 @@ function App() {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch('https://iptvsmart.vercel.app/api/user/login', {
+      const response = await fetch(`${API_BASE}/api/user/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(credentials),
@@ -55,13 +55,13 @@ function App() {
       if (data.success) {
         setIsAuthenticated(true);
         setCurrentUser(data.user);
-        const connectionsResponse = await fetch('https://iptvsmart.vercel.app/api/iptv/connections');
+        const connectionsResponse = await fetch(`${API_BASE}/api/iptv/connections`);
         const connectionsData = await connectionsResponse.json();
         if (connectionsData.success && connectionsData.connections.length > 0) {
           const connection = connectionsData.connections[0];
           setConnectionData(connection);
 
-          const dashboardResponse = await fetch(`https://iptvsmart.vercel.app/api/iptv/dashboard/${connection.id}`);
+          const dashboardResponse = await fetch(`${API_BASE}/api/iptv/dashboard/${connection.id}`);
           const dashboardData = await dashboardResponse.json();
 
           if (dashboardData.success) {

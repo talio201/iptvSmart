@@ -142,6 +142,7 @@ export default function XtreamPlayer(props: XtreamPlayerProps) {
 
   useEffect(() => {
     let cancelled = false;
+    console.log("XtreamPlayer: useEffect - Player setup initiated for streamId:", streamId); // ADDED LOG
 
     function attachBasicListeners() {
       const v = videoRef.current;
@@ -161,7 +162,7 @@ export default function XtreamPlayer(props: XtreamPlayerProps) {
         setIsMuted(v.muted);
       };
       const onError = (e: any) => {
-        console.error("Video element error:", e);
+        console.error("XtreamPlayer: Video element error:", e); // MODIFIED LOG
         setErrorMsg("Ocorreu um erro no player de vídeo.");
       };
 
@@ -196,6 +197,7 @@ export default function XtreamPlayer(props: XtreamPlayerProps) {
       if (hlsRef.current) {
         hlsRef.current.destroy();
         hlsRef.current = null;
+        console.log("XtreamPlayer: Previous HLS instance destroyed."); // ADDED LOG
       }
       
       const m3u8Src = candidateUrls.find(c => c.container === 'm3u8')?.url;
@@ -210,9 +212,11 @@ export default function XtreamPlayer(props: XtreamPlayerProps) {
         if (m3u8Src && (nativeHls || Hls.isSupported())) {
           sourceSet = true;
           setActiveUrl(m3u8Src);
+          console.log("XtreamPlayer: Attempting to load HLS stream:", m3u8Src); // ADDED LOG
           if (nativeHls) {
             setUsingNativeHls(true);
             video.src = m3u8Src;
+            console.log("XtreamPlayer: Using native HLS."); // ADDED LOG
           } else {
             const hls = new Hls({
               lowLatencyMode: true,
@@ -229,18 +233,23 @@ export default function XtreamPlayer(props: XtreamPlayerProps) {
               }));
               setLevels(lvls);
               setCurrentLevel(hls.currentLevel ?? -1);
+              console.log("XtreamPlayer: HLS MANIFEST_PARSED. Levels:", lvls); // ADDED LOG
             });
             hls.on(Hls.Events.LEVEL_SWITCHED, (_e, data) => setCurrentLevel(data.level ?? -1));
             hls.on(Hls.Events.ERROR, (event, data) => {
+              console.error("XtreamPlayer: HLS error event:", data); // MODIFIED LOG
               if (data.fatal) {
                 switch (data.type) {
                   case Hls.ErrorTypes.NETWORK_ERROR:
+                    console.warn("XtreamPlayer: HLS fatal NETWORK_ERROR. Attempting startLoad()."); // ADDED LOG
                     hls.startLoad();
                     break;
                   case Hls.ErrorTypes.MEDIA_ERROR:
+                    console.warn("XtreamPlayer: HLS fatal MEDIA_ERROR. Attempting recoverMediaError()."); // ADDED LOG
                     hls.recoverMediaError();
                     break;
                   default:
+                    console.error("XtreamPlayer: HLS fatal error, destroying HLS instance."); // ADDED LOG
                     hls.destroy();
                     break;
                 }
@@ -251,21 +260,25 @@ export default function XtreamPlayer(props: XtreamPlayerProps) {
           sourceSet = true;
           video.src = mp4Src;
           setActiveUrl(mp4Src);
+          console.log("XtreamPlayer: Attempting to load MP4 stream:", mp4Src); // ADDED LOG
         } else if (tsSrc && video.canPlayType('video/mp2t')) {
           sourceSet = true;
           video.src = tsSrc;
           setActiveUrl(tsSrc);
+          console.log("XtreamPlayer: Attempting to load TS stream:", tsSrc); // ADDED LOG
         }
 
         if (sourceSet) {
           if (autoPlay) {
+            console.log("XtreamPlayer: Attempting video.play()."); // ADDED LOG
             await video.play();
           }
         } else {
           setErrorMsg("Nenhum formato de vídeo suportado encontrado.");
+          console.error("XtreamPlayer: No supported video format found for streamId:", streamId); // ADDED LOG
         }
       } catch (error: any) {
-        console.error("Error setting up player:", error);
+        console.error("XtreamPlayer: Error setting up player:", error); // MODIFIED LOG
         if (error.name !== 'AbortError') {
           setErrorMsg(`Falha ao iniciar a reprodução: ${error.message}`);
         }
@@ -281,6 +294,7 @@ export default function XtreamPlayer(props: XtreamPlayerProps) {
       if (hlsRef.current) {
         hlsRef.current.destroy();
         hlsRef.current = null;
+        console.log("XtreamPlayer: useEffect cleanup - HLS instance destroyed."); // ADDED LOG
       }
     };
   }, [candidateUrls, autoPlay, hlsConfig, contentType]);
