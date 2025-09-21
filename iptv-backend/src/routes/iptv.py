@@ -175,24 +175,35 @@ def proxy():
         if not url:
             return jsonify({'success': False, 'error': 'URL é obrigatória'}), 400
         
+        # Tenta extrair o domínio base da URL original para o Referer
+        try:
+            from urllib.parse import urlparse
+            parsed_url = urlparse(url)
+            referer_domain = f"{parsed_url.scheme}://{parsed_url.netloc}/"
+        except Exception:
+            referer_domain = "" # Fallback se a URL for malformada
+
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
             'Accept': '*/*',
             'Accept-Language': 'en-US,en;q=0.9',
             'Connection': 'keep-alive',
-            'Referer': url.split('/')[0] + '//' + url.split('/')[2] + '/' # Envia apenas o domínio raiz como referer
+            'Referer': referer_domain # Usar o domínio base extraído
         }
         
-        req = requests.get(url, stream=True, timeout=30, headers=headers, verify=False)
+        # Aumentar o timeout para 60 segundos
+        req = requests.get(url, stream=True, timeout=60, headers=headers, verify=False)
 
         # Check if the request to the target was successful
         if req.status_code >= 400:
+            logging.error(f"Proxy target failed with status {req.status_code}. Reason: {req.reason}. Target URL: {url}. Response body: {req.text}") # ADDED LOG
             return jsonify({
                 'success': False,
                 'error': 'Proxy target failed',
                 'target_status': req.status_code,
                 'target_reason': req.reason,
-                'target_url': url
+                'target_url': url,
+                'target_response_body': req.text # Incluir corpo da resposta para depuração
             }), 502
 
         content_type = req.headers.get('content-type', '').lower()
