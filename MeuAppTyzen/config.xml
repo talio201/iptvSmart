@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://tizen.org/apps/MeuAppTyzen" version="1.0.0" viewmodes="maximized">
+    <tizen:application id="MeuAppTyzen.MeuAppTyzen" package="MeuAppTyzen.MeuAppTyzen" required_version="2.3"/>
+    <feature name="http://tizen.org/feature/screen.size.all"/>
+    <icon src="favicon.ico"/>
+    <name>MeuAppTyzen</name>
+    <tizen:profile name="tv"/>
+    <content src="index.html"/>
+    <access origin="*" subdomains="true"></access>
+    <allow-navigation href="*"/>
+    <tizen:privilege name="http://tizen.org/privilege/internet"/>
+    <tizen:privilege name="http://tizen.org/privilege/application.launch"/>
+    <tizen:privilege name="http://tizen.org/privilege/tv.inputdevice"/>
+    <tizen:privilege name="http://tizen.org/privilege/unlimitedmedia"/>
+</widget>

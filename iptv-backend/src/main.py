@@ -7,14 +7,7 @@ from src.routes.user import user_bp
 app = Flask(__name__)
 
 # Apply CORS to the app
-CORS(app, resources={
-    r"/api/*": {
-        "origins": [
-            "http://localhost:5173",
-            "https://talio201.github.io"
-        ]
-    }
-})
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 # Register blueprints
 app.register_blueprint(iptv_bp, url_prefix='/api/iptv')
